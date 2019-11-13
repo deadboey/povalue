@@ -5,7 +5,7 @@ function init() {
         height: 500,
         bones: 4,
         amplitude: 40,
-        color: 'rgba(180, 0, 0, .8)',
+        color: 'rgba(0, 146, 21, .8)',
         speed: .2
     });
 
@@ -13,7 +13,7 @@ function init() {
         height: 520,
         bones: 3,
         amplitude: 70,
-        color: 'rgba(100, 92, 94, .8)',
+        color: 'rgba(0, 222, 32, .8)',
         speed: .15
     });
 

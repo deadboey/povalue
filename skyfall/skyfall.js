@@ -11,7 +11,7 @@ function generateModule() {
     var mW = Math.random() * (max - min) + min;
     var pos = Math.random() * (80 - (-140)) + (-140);
 
-    colors = ["#fc0303", "#631919", "#000000"];
+    colors = ["#00de20", "##009215", "#000000"];
 
     activeModules += 1;
 
