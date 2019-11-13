@@ -50,8 +50,28 @@ body {
 }
 
 .hb-jumbotron h1 {
-    line-height: 2,5vw;
-    font-size: 36px;
+    line-height: 7vw;
+    font-size: inherit;
+}
+
+.hb-jumbotronback {
+  font-size: 7vw;
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  font-weight: 400;
+  border-radius: 0px;
+}
+
+.hb-jumbotronback span {
+  font-size: inherit;
+  white-space: nowrap;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+}
+
+.hb-jumbotronback h1 {
+  line-height: 2,5vw;
+  font-size: 36px;
 }
 
 .hb-hr {
