@@ -50,14 +50,8 @@ body {
 }
 
 .hb-jumbotron h1 {
-    line-height: 7vw;
-    font-size: inherit;
-}
-
-.hb-jumbotronback h1 {
- line-height: 2,5vw;
- font-size: 36px;
-
+    line-height: 2,5vw;
+    font-size: 36px;
 }
 
 .hb-hr {
@@ -107,12 +101,23 @@ body {
     background-color: #009215;
     height: 100vh;
     position: fixed;
-    top:0;
-    right:0;
+    top: 0;
+    right: 0;
     z-index: 9;
+    color: black;
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
 }
+a {
+    color:black;
+}
+a:hover{
+    color:#FFFFFF;
+}
+
 .hb-menu-active {
-    width: 35% !important;
+    width: 25% !important;
 }
 
 /*!
