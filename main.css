@@ -74,7 +74,7 @@ body {
 }
 
 .hb-module {
-    background-color: orange;
+    background-color: #009215;
     /*border: .1px solid black;*/
     border-radius: 5px;
     position: absolute;
@@ -100,15 +100,15 @@ body {
 #hb-menu {
     transition: all 0.15s;
     width: 0%;
-    background-color: orange;
+    background-color: #009215;
     height: 100vh;
     position: fixed;
     top:0;
-    left:0;
+    right:0;
     z-index: 9;
 }
 .hb-menu-active {
-    width: 100% !important;
+    width: 35% !important;
 }
 
 /*!
