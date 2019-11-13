@@ -48,9 +48,7 @@ body {
     font-weight: 700;
     font-family: 'Roboto', sans-serif;
 }
-.hb-jumbotron p {
-    /*line-height: 60px;*/
-}
+
 .hb-jumbotron h1 {
     line-height: 7vw;
     font-size: inherit;
