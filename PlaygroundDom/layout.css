@@ -1,0 +1,54 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 20%;
+    grid-template-rows: 20vh 75vh 5vh;
+}
+.grid-item {
+    background-color: green;
+    border: 1px solid black;
+}
+
+.headerBar {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.footerBar {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.rightMenu {
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+
+.contentField {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    overflow: auto;
+}
+
+.contentBox {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    margin: 25px;
+}
+
+body {
+    margin: 0px;
+}
+
+#buttonPreviousPage {
+    float: left;
+    position: static;
+    margin: 10px;
+}
+
+#buttonNextPage {
+    float: right;
+    position: static;
+    margin: 10px;
+}
