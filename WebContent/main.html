@@ -2,44 +2,93 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>PotValue - Get your Pot evaluated</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <script src="wave/TweenMax.min.js"></script>
+    <script src="wave/wavify.js"></script>
+    <title>PotValue - Get your Pot evaluated</title>
     </head>
+
     <body>
-        <table>
-            <tr>THIS IS THE HEAD - PLACE BANNER HERE</tr>
-            <tr>
-                <td><nav>
-                    <h3>Navigation</h3><br/>
-                    
-                        <a href="index.html">Startseite</a><br/>
-                        <a href="main.html">Media</a><br/>
-                        <a href="impressum.html">Impressum</a><br/>
-                        <a href="contact-us.html">Contact</a><br/>
-                        <a href="login.html">Logout</a><br/>     
-                </nav></td>
-                <td>
-                    <h3>HERE COMES THE MEMES</h3>
-                    <br/>
-                    <img src="img/hanf.jpg" usemap="#image-map" alt='Funny Weed Content' width="255">
-                    <br/>
-                    <video src="img/WhatsApp Video 2019-11-12 at 15.39.07.mp4" controls width="255">
-                            Ihr Browser kann dieses Video nicht wiedergeben.<br/>
-                            Dieser Film zeigt eine Demonstration des video-Elements. 
-                            Sie können ihn unter <a href="#">Link-Addresse</a> abrufen.
-                    </video>
-                    <br/>
-                    <img src="img/metin-1.jpeg" alt="metin-meme" width="255">
-                    <br/>
-                    <img src="img/metin-2.jpeg" alt="metin-meme2" width="255">
-                    <br/>
-                    <img src="img/musicianjoke.png" alt="69 with force" width="255">
-                    <br/>
-                    <img src="img/limitless-energy.jpeg" alt="metin-meme" width="255">
-                    <br/>
-                    
-                </td>
-            </tr>
-            <tr><td><br/><i>Copyright simzu99, piet123, BadgerDontCare, domB</i></td></tr>
-        </table>
+
+        <div class="hb-navbar">
+            <button class="hamburger hamburger--spring" type="button" id="hb-hamburger">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+
+        <div id="hb-menu">
+            <br />
+            <a href="index.html">Startseite</a>
+            <br />
+            <a href="Videos.html">Videos</a>
+            <br />
+            <a href="Memes.html">Memes</a>
+            <br />
+            <a href="impressum.html">Impressum</a>
+            <br />
+            <a href="contact-us.html">Contact</a>
+            <br />
+            <a href="login.html">login</a>
+            <br />
+            <a href="register.html">registrieren</a>
+            <br />
+
+        </div>
+
+        <div class="container">
+            <div class="jumbotron hb-jumbotron hb-non-background">
+                <h1 class="display-4">Get your<br><span>post</span><br>evaluated</h1>
+                <hr class="my-4 hb-hr">
+                <p class="lead">Here you can find the newest memes and videos in Ravensburg. Look around!</p>
+            </div>
+        </div>
+
+        <div class="waveWrapper">
+            <div class="wrapper">
+                <div class="wrapper-inner">
+                    <svg height="100%" width="100%" version="1.1" id="wave1" xmlns="http://www.w3.org/2000/svg" class="wave">
+                        <title>Wave</title>
+                        <defs></defs>
+                        <path id="feel-the-wave" d="" />
+                    </svg>
+                </div>
+            </div>
+            <div class="hb-module-dropper" id="animation-wrapper">
+                <div class="hb-module-wrapper" id="hb-module-1">
+                    <div class="hb-module"></div>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="wrapper-inner">
+                    <svg height="100%" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wave">
+                        <title>Wave</title>
+                        <defs></defs>
+                        <path id="feel-the-wave-two" d="" />
+                    </svg>
+                </div>
+            </div>
+            <div class="follow-up">
+
+            </div>
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <script src="skyfall/skyfall.js"></script>
+        <script src="wave/runner.js"></script>
+        <script>
+            init();
+        </script>
     </body>
-</html>
