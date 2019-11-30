@@ -22,7 +22,7 @@ $passwort = $_POST['passwort'];
 
           if (password_verify($passwort, $password_hash)){
 
-
+              $_SESSION['user'] = $_email;
               header("location: main.html");
 
           } else {
