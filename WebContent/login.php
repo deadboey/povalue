@@ -16,13 +16,14 @@ $passwort = $_POST['passwort'];
 
 
       if($count == 1) {
-
+         
           $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+          $name = $row['vorname'];
           $password_hash = $row['passwort'];
 
           if (password_verify($passwort, $password_hash)){
 
-              $_SESSION['user'] = $_email;
+              $_SESSION['user'] = $name;
               header("location: main.html");
 
           } else {
