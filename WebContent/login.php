@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "povalueuser");
+include("connect.php");
 $passwort = $_POST['passwort'];
 
    session_start();
@@ -19,14 +19,17 @@ $passwort = $_POST['passwort'];
 
           $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
           $name = $row['vorname'];
+          $ID = $row['ID'];
           $password_hash = $row['passwort'];
 
           if (password_verify($passwort, $password_hash)){
 
               $_SESSION['user'] = $name;
+              $_SESSION['id'] = $ID;
+
               echo "Hallo ", $_SESSION['user'], "!" ;
-              echo "<br/>Solltest du nicht innerhalb 5 Sekunden weitergeleitet werden, klicke hier: <a href='main.html'>Startseite</a></div>";
-              header("refresh:4;main.html");
+              echo "<br/>Solltest du nicht innerhalb 5 Sekunden weitergeleitet werden, klicke hier: <a href='main.php'>Startseite</a></div>";
+              header("refresh:4;main.php");
 
           } else {
 
