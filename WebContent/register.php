@@ -15,16 +15,15 @@ $user_info ="INSERT INTO USER (`email`, `passwort`)
 			VALUES ('".$_POST["email"]."',
 			'".$password_hash."');";
 
-if (!mysqli_query($connect, $user_info))
+if (mysqli_query($connect, $user_info))
 
-	{
-	die('Error: ' . mysqli_error($connect));
-	}
-
-header("location: index.html");
-
-mysqli_close($connect);
-
+{
+    echo "<div class='form'><h3>Registrierung Erfolgreich.</h3>
+                    <br/>Klicken Sie hier um sich anzumelden <a href='index.html'>Login</a></div>";
+} else {
+    echo "<div class='form'><h3>E-Mail Adresse bereits vergeben.</h3>
+                    <br/>Klicken Sie hier um es erneut zu versuchen <a href='register.html'>Registrieren</a></div>";
+}
     ?>
 </body>
 </html>
