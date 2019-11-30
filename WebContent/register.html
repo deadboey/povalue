@@ -14,15 +14,15 @@
     <form action="register.php" method="post" class="form-signin">
         <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+        <label for="inputVorname" class="sr-only">Vorname</label>
+        <input type="text" id="inputVorname" name="vorname" class="form-control" placeholder="Vorname" required autofocus>
+        <label for="inputNachname" class="sr-only">Nachname</label>
+        <input type="text" id="inputNachname" name="nachname" class="form-control" placeholder="Nachname" required>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email Adresse" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="passwort" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
+        <input type="password" id="inputPassword" name="passwort" class="form-control" placeholder="Passwort" required>
+      
         <button class="btn btn-lg btn-primary btn-block" type="submit" value="register" form-action="register.php" method="post">Register</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2019 PoValue</p>
     </form>

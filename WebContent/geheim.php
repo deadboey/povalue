@@ -1,11 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['user'])) {
-    die('Bitte zuerst <a href="index.html">einloggen</a>');
+if(isset($_SESSION["user"])){
+    header("Location: index.html");
+    exit();
 }
-
-//Abfrage der Nutzer ID vom Login
-$userid = $_SESSION['user'];
-
-echo "Hallo User: ".$userid;
 ?>

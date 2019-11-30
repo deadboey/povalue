@@ -11,9 +11,8 @@ if (!$connect)
 
 
 
-$user_info ="INSERT INTO USER (`email`, `passwort`)
-			VALUES ('".$_POST["email"]."',
-			'".$password_hash."');";
+$user_info ="INSERT INTO USER (`email`, `passwort`, `vorname`, `nachname`)
+			VALUES ('".$_POST["email"]."','".$password_hash."','".$_POST["vorname"]."','".$_POST["nachname"]."');";
 
 if (mysqli_query($connect, $user_info))
 
