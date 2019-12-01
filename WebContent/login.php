@@ -29,19 +29,19 @@ $passwort = $_POST['passwort'];
 
               echo "Hallo ", $_SESSION['user'], "!" ;
               echo "<br/>Solltest du nicht innerhalb 5 Sekunden weitergeleitet werden, klicke hier: <a href='main.php'>Startseite</a></div>";
-              header("refresh:4;main.php");
+              header("refresh:3;main.php");
 
           } else {
 
               echo "<div class='form'><h3>Passwort ist falsch.</h3>
-                    <br/>Klicken Sie hier um sich erneut anzumelden <a href='index.html'>Login</a></div>";
+                    <br/>Klicken Sie hier um sich erneut anzumelden <a href='index.php'>Login</a></div>";
 
           }
 
       }else {
 
           echo "<div class='form'><h3>E-Mail Adresse ist falsch.</h3>
-                    <br/>Klicken Sie hier um sich erneut anzumelden <a href='index.html'>Login</a></div>";
+                    <br/>Klicken Sie hier um sich erneut anzumelden <a href='index.php'>Login</a></div>";
       }
    }
 ?>
