@@ -7,7 +7,6 @@ include("connect.php");
        header("location: main.php");
    }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,19 +20,27 @@ include("connect.php");
 
 </head>
 <body class="text-center">
-    <form action="login.php" method="post" class="form-signin">
-        <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+ 
+<form action="login.php" method="post" class="form-signin">
+       
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
         <label for="inputEmail" class="sr-only">Email address</label>
+
         <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="passwort" class="form-control" placeholder="Password" required>
-        
+        <input type="password" id="inputPassword" name="passwort" class="form-control" placeholder="Password" required>        
+
         <button class="btn btn-lg btn-primary btn-block" type="submit" value="login" form-action="login.php" method="post">Sign in</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2019 PoValue</p>
     </form>
-    <form action="register.html" method="post" class="form-signin">
+    <form action="register.html" method="post" class="form-register">
         <button class="btn btn-lg btn-primary btn-block" type="submit" value="register" form-action="register.html" method="post">Register</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019 PoValue</p>
+    </form>
+     <form action="pwforgot.html" method="post" class="form-pwforgot" center>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="pwforgot" form-action="pwforgot.html" method="post">Passwort vergessen?</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2019 PoValue</p>
     </form>
 
