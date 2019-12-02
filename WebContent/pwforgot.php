@@ -15,14 +15,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['email'] = $_email;
 
     if($count == 1) {
-      
-   header("location:pwsetback.html");
 
-        }
+        header("location:pwsetback.html");
 
-    }else {
-        echo "<div class='form'><h3>E-Mail Adresse ist falsch.</h3>
-                    <br/>Klicken Sie hier um es erneut zu versuchen <a href='pwforgot.html'>Passwort zurücksetzen</a></div>";
+    } else {
+        
+        echo "<div class='form'><h3>E-Mail Adresse ist falsch.</h3> <br/>Klicken Sie hier um es erneut zu versuchen <a href='pwforgot.html'>Passwort zurücksetzen</a></div>";
+
     }
+
+}
 
 ?>

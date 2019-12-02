@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include("connect.php");
 
    session_start();
@@ -10,49 +10,96 @@ include("connect.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="SignIn.css">
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/sign-in/">
-
-    <title>SignIn</title>
-
+    <link rel="stylesheet" href="logreg.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>Anmeldung</title>
 </head>
-<body class="text-center">
- 
-<form action="login.php" method="post" class="form-signin">
-       
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+<body>
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="panel panel-login">
+                            <div class="panel-heading">
+                                <div class="welcome-text">
+                                    <p><h3>Willkommen bei PoValue</h3></p> 
+                                    <hr>     
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <a href="#" class="active" id="login-form-link">Login</a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a href="#" id="register-form-link">Registrierung</a>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <form id="login-form" action="login.php" method="post" role="form" style="display: block;">
+                                            <div class="form-group">
+                                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Adresse" value="">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="passwort" id="password" tabindex="2" class="form-control" placeholder="Passwort">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-sm-offset-3">
+                                                        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Log In" form-action="login.php" method="post">Log In</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="text-center">
+                                                            <a href="pwforgot.html" tabindex="5" class="forgot-password">Passwort vergessen?</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <form id="register-form" action="register.php" method="post" role="form" style="display: none;">
+                                            <div class="form-group">
+                                                <input type="text" name="vorname" id="firstname" tabindex="1" class="form-control" placeholder="Vorname" value="">
+                                            </div>
+                                            <div class="form-group">
+                                                    <input type="text" name="nachname" id="secondname" tabindex="1" class="form-control" placeholder="Nachname" value="">
+                                                </div>
+                                            <div class="form-group">
+                                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Adresse" value="">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="passwort" id="password" tabindex="2" class="form-control" placeholder="Passwort">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="passwort_check" id="passwort_check" tabindex="2" class="form-control" placeholder="Passwort wiederholen">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                        <div class="col-sm-6 col-sm-offset-3">
+                                                                <button class="btn btn-lg btn-primary btn-block" type="submit" value="Registrieren" form-action="register.php" method="post">Jetzt registrieren</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                    <p class="mt-5 mb-3 text-muted" >&copy; 2019 PoValue</p>
+            </div>
 
-        <label for="inputEmail" class="sr-only">Email address</label>
-
-        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
-
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="passwort" class="form-control" placeholder="Password" required>        
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="login" form-action="login.php" method="post">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2019 PoValue</p>
-    </form>
-    <form action="register.html" method="post" class="form-register">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="register" form-action="register.html" method="post">Register</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2019 PoValue</p>
-    </form>
-     <form action="pwforgot.html" method="post" class="form-pwforgot" center>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="pwforgot" form-action="pwforgot.html" method="post">Passwort vergessen?</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2019 PoValue</p>
-    </form>
-
-
-
-   
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- Falls wir noch ne js Datei brauchen
-
-        <script src="SignIn.js"></script>
-
-    -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="logreg.js"></script>
 </body>
-</html>
