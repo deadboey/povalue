@@ -19,9 +19,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         header("location:pwsetback.html");
 
     } else {
-        
-        echo "<div class='form'><h3>E-Mail Adresse ist falsch.</h3> <br/>Klicken Sie hier um es erneut zu versuchen <a href='pwforgot.html'>Passwort zurücksetzen</a></div>";
 
+        echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Entschuldigung. Die E-Mail Adresse ist falsch.');
+    window.location.href='pwforgot.html';
+    </script>");
     }
 
 }

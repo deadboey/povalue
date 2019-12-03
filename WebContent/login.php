@@ -27,21 +27,24 @@ $passwort = $_POST['passwort'];
               $_SESSION['user'] = $name;
               $_SESSION['id'] = $ID;
 
-              echo "Hallo ", $_SESSION['user'], "!" ;
-              echo "<br/>Solltest du nicht innerhalb 5 Sekunden weitergeleitet werden, klicke hier: <a href='main.php'>Startseite</a></div>";
-              header("refresh:3;main.php");
+
+              header("refresh:1;main.php");
 
           } else {
 
-              echo "<div class='form'><h3>Passwort ist falsch.</h3>
-                    <br/>Klicken Sie hier um sich erneut anzumelden <a href='index.php'>Login</a></div>";
+              echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Das Passwort ist Falsch. Bitte versuchen Sie es erneut.');
+    window.location.href='index.php';
+    </script>");
 
           }
 
       }else {
 
-          echo "<div class='form'><h3>E-Mail Adresse ist falsch.</h3>
-                    <br/>Klicken Sie hier um sich erneut anzumelden <a href='index.php'>Login</a></div>";
+          echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Die E-Mail Adresse ist leider nicht vergeben. Bitte versuchen Sie es erneut.');
+    window.location.href='index.php';
+    </script>");
       }
    }
 ?>

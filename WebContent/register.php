@@ -20,21 +20,40 @@ $user_info ="INSERT INTO USER (`email`, `passwort`, `vorname`, `nachname`)
 
 if($passwort == $passwort_check) {
 
+    if(strlen($passwort) >= 7) {
 
-    if (mysqli_query($connect, $user_info))
+        if (mysqli_query($connect, $user_info))
 
-    {
-        echo "<div class='form'><h3>Registrierung Erfolgreich.</h3>
-                    <br/>Klicken Sie hier um sich anzumelden <a href='index.php'>Login</a></div>";
+        {
+
+
+            echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Vielen Dank! Ihre Registrierung war erfolgreich.');
+    window.location.href='index.php';
+    </script>");
+        }
+        else {
+            echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Entschuldigung. Die E-Mail Adresse ist bereits vergeben.');
+    window.location.href='index.php';
+    </script>");
+
+        }
+
     } else {
-        echo "<div class='form'><h3>E-Mail Adresse bereits vergeben.</h3>
-                    <br/>Klicken Sie hier um es erneut zu versuchen <a href='register.html'>Registrieren</a></div>";
+        echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Das Passwort ist leider zu kurz. Es muss mindestens 7 Zeichen lang sein.');
+    window.location.href='index.php';
+    </script>");
+
     }
 
 } else {
 
-     echo "<div class='form'><h3>Passwörter stimmen nicht überein.</h3>
-                    <br/>Klicken Sie hier um es erneut zu versuchen <a href='index.php'>Login</a></div>";
+    echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Die Passwörter stimmen leider nicht überein. Bitte versuchen Sie es erneut.');
+    window.location.href='index.php';
+    </script>");
 
 }
 

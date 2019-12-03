@@ -80,6 +80,7 @@ include("connect.php");
                                             <div class="form-group">
                                                 <input type="password" name="passwort_check" id="passwort_check" tabindex="2" class="form-control" placeholder="Passwort wiederholen">
                                             </div>
+
                                             <div class="form-group">
                                                 <div class="row">
                                                         <div class="col-sm-6 col-sm-offset-3">
