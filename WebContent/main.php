@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 include("connect.php");
 include("geheim.php");
@@ -12,8 +12,6 @@ include("geheim.php");
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="main.css">
   <link rel="canonical" href="https://getbootstrap.com/docs/4.4/">
- 
-
 	<title>PotValue - Get your Post evaluated</title> 
 </head>
 
@@ -49,6 +47,7 @@ include("geheim.php");
   </div>
 </div>
 
+<!--- Altes Karusell
 <div>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -85,6 +84,75 @@ include("geheim.php");
     </a>
   </div>
 </div>
+--->
+
+<!---Gallerie--->
+<!---Reihe 1--->
+    <div>
+      <div class="column">
+        <img src="img/DSC_0306.JPG" alt="0">
+        <span class="icon-focus"></span>
+      </div>
+      <div class="column">
+      <img src="img/DSC_0490.JPG" alt="0">
+        <span class="icon-focus"></span>
+      </div>
+      <div class="column">
+      <img src="img/DSC_0500.JPG" alt="0">
+        <span class="icon-focus"></span>
+      </div>
+      <div class="column">
+      <img src="img/DSC_0501.JPG" alt="0">
+        <span class="icon-focus"></span>
+      </div>
+    </div>
+    <!---Reihe 2--->
+    <div>
+      <div class="column">
+      <img src="img/DSC_0731.JPG" alt="0">
+        <span class="icon-focus"></span>
+      </div>
+      <div class="column">
+      <img src="img/DSC_0733.JPG" alt="0">
+        <span class="icon-focus"></span>
+      </div>
+      <div class="column">
+      <img src="img/DSC_0754.JPG" alt="0">
+        <span class="icon-focus"></span>
+      </div>
+      <div class="column">
+      <img src="img/DSC_0755.JPG" alt="0">
+        <span class="icon-focus"></span>
+      </div>
+    </div>
+
+<!--- Slider???
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false" data-keyboard="true">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+    </ol>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Zurück</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Vorwärts</span>
+      </a>
+      <a class="close" role="button" href="#" data-dismiss="modal">
+        <span class="sr-only">Close</span>
+      </a>
+    </div>
+  </div>
+</div>
+--->
 
 <span class="likebtn-wrapper" data-theme="custom" data-btn_size="30" data-f_size="25" 
 data-icon_size="25" data-icon_l="thmb4-u" data-icon_d="thmb4-d" data-icon_l_c="#000000" 
@@ -96,10 +164,6 @@ data-counter_type="percent" data-i18n_dislike="Mag ich nicht" data-i18n_after_li
 data-i18n_after_dislike="Sau bled" data-i18n_like_tooltip="Klick auf mich!" 
 data-i18n_dislike_tooltip="Klick auf mich!" data-i18n_unlike_tooltip="Andere Meinung?" 
 data-i18n_undislike_tooltip="Andere Meinung?"></span>
-
-  <script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 </html>

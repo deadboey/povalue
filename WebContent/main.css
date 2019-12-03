@@ -1,5 +1,6 @@
 body {
   padding-bottom: 0px;
+  margin: 0;
 }
 
 .navbar {
@@ -25,6 +26,24 @@ body {
   margin-bottom: 0px;
   font-size: 1.4em;
 }
+
+/* Gallerie */
+*
+{
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  height: 20%;
+  padding: 1px;
+}
+
+img {
+  width: 100%;
+}
+
 
 /* Karusell
 -------------------------------------------------- */
