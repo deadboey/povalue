@@ -49,6 +49,7 @@ include("geheim.php");
   </div>
 </div>
 
+<div>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -83,7 +84,20 @@ include("geheim.php");
       <span class="sr-only">Vorwärts</span>
     </a>
   </div>
+</div>
 
+<span class="likebtn-wrapper" data-theme="custom" data-btn_size="30" data-f_size="25" 
+data-icon_size="25" data-icon_l="thmb4-u" data-icon_d="thmb4-d" data-icon_l_c="#000000" 
+data-icon_l_c_v="#23ca53" data-icon_d_c="#000000" data-icon_d_c_v="#ff0000" data-label_c="#000000" 
+data-label_c_v="#000000" data-counter_l_c="#23ca53" data-counter_d_c="#ff0000" data-bg_c="#ffffff" 
+data-bg_c_v="#eaeaea" data-brdr_c="#000000" data-f_family="Impact" data-label_fs="r" data-lang="de" 
+data-i18n_like="Mag ich" data-ef_voting="buzz" data-identifier="rating" data-show_dislike_label="true" 
+data-counter_type="percent" data-i18n_dislike="Mag ich nicht" data-i18n_after_like="Find i echd guad" 
+data-i18n_after_dislike="Sau bled" data-i18n_like_tooltip="Klick auf mich!" 
+data-i18n_dislike_tooltip="Klick auf mich!" data-i18n_unlike_tooltip="Andere Meinung?" 
+data-i18n_undislike_tooltip="Andere Meinung?"></span>
+
+  <script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
