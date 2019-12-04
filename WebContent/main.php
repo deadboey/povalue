@@ -103,16 +103,17 @@ include("geheim.php");
                     if (!$connect) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    $sql = "SELECT A.id, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
+                    $sql = "SELECT A.id,A.image_name, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
                     $result = mysqli_query($connect, $sql);
 
                     while($row = mysqli_fetch_assoc($result)){
                         $image_src = $row['image'];
                         $image_idmax = $row['id'];
+                        $image_name = $row['image_name'];
                     ?>
                     <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
                         <div href="#lb-gallery3-7" data-slide-to="0" data-toggle="modal">
-                            <img src='<?php echo $image_src; ?>'/>
+                            <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
                             <span class="icon-focus"></span>
                         </div>
                     </div>
@@ -126,7 +127,7 @@ include("geheim.php");
                   if (!$connect) {
                       die("Connection failed: " . mysqli_connect_error());
                   }
-                  $sql = "SELECT A.id, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
+                  $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
                   $result = mysqli_query($connect, $sql);
                   $itemno = 1;
 
@@ -169,11 +170,12 @@ include("geheim.php");
                     if (!$connect) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    $sql = "SELECT A.id, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
+                    $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
                     $result = mysqli_query($connect, $sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $image_src = $row['image'];
                         $image_idmax = $row['id'];
+                        $image_name = $row['image_name'];
                     ?>
                     <div class="carousel-item active">
                         <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
@@ -194,7 +196,7 @@ include("geheim.php");
                         die("Connection failed: " . mysqli_connect_error());
                     }
 
-                    $sql = "SELECT A.id, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
+                    $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
 
                     $result = mysqli_query($connect, $sql);
 
