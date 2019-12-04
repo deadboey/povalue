@@ -128,19 +128,24 @@ include("geheim.php");
                   }
                   $sql = "SELECT A.id, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
                   $result = mysqli_query($connect, $sql);
-
+                  $itemno = 1;
 
                   while($row = mysqli_fetch_assoc($result)){
                       $image_src = $row['image'];
                       $image_name = $row['image_name'];
+
+
                     ?>
                     <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                        <div href="#lb-gallery3-7" data-slide-to="0" data-toggle="modal">
+                        <div href="#lb-gallery3-7" data-slide-to='<?php echo $itemno; ?>' data-toggle="modal">
                             <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
                             <span class="icon-focus"></span>
                         </div>
                     </div>
+                  
                     <?php
+                      $itemno++;
+
                   }
                   mysqli_close($connect);
                     ?>
@@ -156,6 +161,7 @@ include("geheim.php");
               <div class="modal-body">
                 <div class="carousel-inner">
 
+                
 
                     <?php
                     include "connect.php";
@@ -208,6 +214,9 @@ include("geheim.php");
                     mysqli_close($connect);
 
                     ?>
+                       
+
+
 
                  
                 </div>
