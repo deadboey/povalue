@@ -70,12 +70,12 @@ include("geheim.php");
 
           // Check extension
           if( in_array($imageFileType,$extensions_arr) ){
-
+              $image_name = $_POST['image_name'];
               // Convert to base64
               $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
               $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
               // Insert record
-              $query = "insert into images(image) values('".$image."')";
+              $query = "insert into images(image, image_name) values('".$image."', '".$image_name."')";
               mysqli_query($connect,$query);
               header("location: main.php");
 
@@ -85,9 +85,14 @@ include("geheim.php");
       ?>
 
       <form method="post" action="" enctype='multipart/form-data'>
-          <input type='file' name='file' />
-          <input type='submit' value='Save name' name='but_upload' />
-      </form>
+          
+              <input type='file' name='file' />
+           
+              <input type='submit' value='Bild Hochladen' name='but_upload' />
+          
+             <input type="text" name="image_name" id="image_name"   placeholder="Bild Titel" />
+            
+</form>
 
 
 <section class="mbr-gallery mbr-slider-carousel cid-rJFQcPPPSH" id="gallery3-7">
