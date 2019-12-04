@@ -6,7 +6,10 @@
 .mbr-gallery .mbr-gallery-item {
   position: relative;
   display: inline-block;
-  width: 25%;
+  width: 10%;
+  height: 15vh;
+  padding: 1px;
+  overflow: hidden;
   cursor: pointer; }
 
 @media (max-width: 768px) {

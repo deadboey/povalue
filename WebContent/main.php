@@ -48,7 +48,7 @@ include("geheim.php");
   <div>
     <div class="header" style="background-image: url(img/background.jpg); padding: 5px; width: 100%; height: 10%;" >
       <b><h2 style="text-align:center; color:white; font-weight: bold;">WILLKOMMEN BEI POVALUE</h2></b>
-      <h3 style="text-align:center; color:white;">Werden Sie Teil unserer Community und bewerten Bilder anderer Mitglieder!</h3>
+      <h3 style="text-align:center; color:white;">Werden Sie Teil unserer Community und bewerten Sie Bilder anderer Mitglieder!</h3>
     </div>
   </div>
 </section>
