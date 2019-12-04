@@ -19,8 +19,35 @@ include("geheim.php");
   <link rel="stylesheet" href="assets/gallery/style.css">
 </head>
 
-  <body>
+  <!---
     <nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="main.php">PoValue <?php echo "heißt dich Willkommen ", $_SESSION['user'], "!" ; ?>  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="main.php">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact-us.html">Kontakt</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="impressum.html">Impressum</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+--->
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="main.php">PoValue <?php echo "heißt dich Willkommen ", $_SESSION['user'], "!" ; ?>  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -47,9 +74,21 @@ include("geheim.php");
 <section>
   <div>
     <div class="header" style="background-image: url(img/background.jpg); padding: 5px; width: 100%; height: 10%;" >
-      <b><h2 style="text-align:center; color:white; font-weight: bold;">WILLKOMMEN BEI POVALUE</h2></b>
-      <h3 style="text-align:center; color:white;">Werden Sie Teil unserer Community und bewerten Sie Bilder anderer Mitglieder!</h3>
+      <b><h2 style="text-align:center; color:white; font-weight: bold;"><?php echo  $_SESSION['user'], ", hier kannst du Bilder von dir hochladen und bewerten lassen!" ; ?></h2></b>
+      <h3 style="text-align:center; color:white;">Entdecke neue Bilder von anderen Usern und gib deine Meinung dazu ab :)</h3>
+      <h3 style="text-align:center; color:white;">Dein PoValue-Team</h3>
     </div>
+  </div>
+</section>
+
+<section id="upload">
+  <div>
+    <form method="post" action="" enctype='multipart/form-data'>
+          <a>Bilder hochladen:</a>
+              <input type="text" name="image_name" id="image_name" placeholder="Geben Sie einen Bildtitel ein" />
+              <input type="file" id="file" value="Bild auswählen" />
+              <input type='submit' class="btn btn-secondary" value='Hochladen' name='but_upload'/>
+    </form>
   </div>
 </section>
 
@@ -84,15 +123,7 @@ include("geheim.php");
       }
       ?>
 
-      <form method="post" action="" enctype='multipart/form-data'>
-          
-              <input type='file' name='file' />
-           
-              <input type='submit' value='Bild Hochladen' name='but_upload' />
-          
-             <input type="text" name="image_name" id="image_name"   placeholder="Bild Titel" />
-            
-</form>
+      
 
 
 <section class="mbr-gallery mbr-slider-carousel cid-rJFQcPPPSH" id="gallery3-7">
