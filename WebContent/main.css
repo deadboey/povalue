@@ -28,15 +28,25 @@ body {
 }
 
 .upload {
-  background-color: #343a40 !important;
+	background-color:whitesmoke;
+	border-radius:10px;
+	display:inline-block;
+	cursor:pointer;
+	color: black;
+	font-family: sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	padding:3px 10px;
+	text-decoration:none;
+}
+.upload:hover {
+	background-color:whitesmoke;
+}
+.upload:active {
+	position:relative;
+	top:1px;
 }
 
-/*
-.custom-file {
-  width: 15% !important;
-  top: 0 !important;
-  right: 0 !important;
-  left: 0 !important;
-  bottom: 0 !important;
+.row {
+  margin-bottom: 150px;
 }
-*/

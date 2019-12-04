@@ -81,13 +81,13 @@ include("geheim.php");
   </div>
 </section>
 
-<section id="upload">
-  <div>
+<section id="row">
+  <div style="height: 10%; background: #343a40; max-height: 20%">
     <form method="post" action="" enctype='multipart/form-data'>
-          <a>Bilder hochladen:</a>
-              <input type="text" name="image_name" id="image_name" placeholder="Geben Sie einen Bildtitel ein" />
+          <a style="color:white; font-weight: bold; margin: 10px;">Bilder hochladen:</a>
+              <input type="text" style="background: whitesmoke;" name="image_name" id="image_name" placeholder="Geben Sie einen Bildtitel ein" />
               <input type="file" id="file" value="Bild auswählen" />
-              <input type='submit' class="btn btn-secondary" value='Hochladen' name='but_upload'/>
+              <input type="submit" class="upload" value="Hochladen" name="but_upload"/>
     </form>
   </div>
 </section>
