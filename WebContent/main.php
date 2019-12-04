@@ -53,62 +53,98 @@ include("geheim.php");
   </div>
 </section>
 
+      <?php
+      include("connect.php");
+
+      if(isset($_POST['but_upload'])){
+
+          $name = $_FILES['file']['name'];
+          $target_dir = "upload/";
+          $target_file = $target_dir . basename($_FILES['file']['name']);
+
+          // Select file type
+          $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+          // Valid file extensions
+          $extensions_arr = array("jpg","jpeg","png","gif");
+
+          // Check extension
+          if( in_array($imageFileType,$extensions_arr) ){
+
+              // Convert to base64
+              $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
+              $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+              // Insert record
+              $query = "insert into images(image) values('".$image."')";
+              mysqli_query($connect,$query);
+              header("location: main.php");
+
+          }
+
+      }
+      ?>
+
+      <form method="post" action="" enctype='multipart/form-data'>
+          <input type='file' name='file' />
+          <input type='submit' value='Save name' name='but_upload' />
+      </form>
+
+
 <section class="mbr-gallery mbr-slider-carousel cid-rJFQcPPPSH" id="gallery3-7">
   <div>
       <div>
         <div class="mbr-gallery-row">
           <div class="mbr-gallery-layout-default">
             <div>
-              <div>
-                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                  <div href="#lb-gallery3-7" data-slide-to="0" data-toggle="modal">
-                    <img src="img/DSC_0306.JPG" alt="" title="">
-                    <span class="icon-focus"></span>
-                  </div>
+                <div>
+                    <?php
+                    include "connect.php";
+                    // Check connection
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                    $sql = "SELECT A.id, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
+                    $result = mysqli_query($connect, $sql);
+
+                    while($row = mysqli_fetch_assoc($result)){
+                        $image_src = $row['image'];
+                        $image_idmax = $row['id'];
+                    ?>
+                    <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
+                        <div href="#lb-gallery3-7" data-slide-to="0" data-toggle="modal">
+                            <img src='<?php echo $image_src; ?>'/>
+                            <span class="icon-focus"></span>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    mysqli_close($connect);
+                    ?>
+                    <?php
+                  include "connect.php";
+                  // Check connection
+                  if (!$connect) {
+                      die("Connection failed: " . mysqli_connect_error());
+                  }
+                  $sql = "SELECT A.id, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
+                  $result = mysqli_query($connect, $sql);
+
+
+                  while($row = mysqli_fetch_assoc($result)){
+                      $image_src = $row['image'];
+                      $image_name = $row['image_name'];
+                    ?>
+                    <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
+                        <div href="#lb-gallery3-7" data-slide-to="0" data-toggle="modal">
+                            <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
+                            <span class="icon-focus"></span>
+                        </div>
+                    </div>
+                    <?php
+                  }
+                  mysqli_close($connect);
+                    ?>
                 </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                  <div href="#lb-gallery3-7" data-slide-to="1" data-toggle="modal">
-                    <img src="img/DSC_0490.JPG" alt="" title="">
-                    <span class="icon-focus"></span>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                  <div href="#lb-gallery3-7" data-slide-to="2" data-toggle="modal">
-                   <img src="img/DSC_0500.JPG" alt="" title="">
-                    <span class="icon-focus"></span>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                  <div href="#lb-gallery3-7" data-slide-to="2" data-toggle="modal">
-                   <img src="img/DSC_0501.JPG" alt="" title="">
-                    <span class="icon-focus"></span>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                  <div href="#lb-gallery3-7" data-slide-to="4" data-toggle="modal">
-                    <img src="img/DSC_0731.JPG" alt="" title="">
-                    <span class="icon-focus"></span>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                  <div href="#lb-gallery3-7" data-slide-to="5" data-toggle="modal">
-                  <img src="img/DSC_0733.JPG" alt="" title="">
-                  <span class="icon-focus"></span>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                  <div href="#lb-gallery3-7" data-slide-to="6" data-toggle="modal">
-                    <img src="img/DSC_0754.JPG" alt="" title="">
-                    <span class="icon-focus"></span>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                  <div href="#lb-gallery3-7" data-slide-to="7" data-toggle="modal">
-                    <img src="img/DSC_0755.JPG" alt="" title="">
-                    <span class="icon-focus"></span>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="clearfix">
             </div>
@@ -119,30 +155,61 @@ include("geheim.php");
             <div class="modal-content">
               <div class="modal-body">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="img/DSC_0306.JPG" alt="" title="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="img/DSC_0490.JPG" alt="" title="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="img/DSC_0500.JPG" alt="" title="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="img/DSC_0501.JPG" alt="" title="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="img/DSC_0731.JPG" alt="" title="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="img/DSC_0733.JPG" alt="" title="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="img/DSC_0754.JPG" alt="" title="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="img/DSC_0755.JPG" alt="" title="">
-                  </div>
+
+
+                    <?php
+                    include "connect.php";
+                    // Check connection
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                    $sql = "SELECT A.id, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
+                    $result = mysqli_query($connect, $sql);
+                    while($row = mysqli_fetch_assoc($result)){
+                        $image_src = $row['image'];
+                        $image_idmax = $row['id'];
+                    ?>
+                    <div class="carousel-item active">
+                        <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
+                    </div>
+                    <?php
+                    }
+                    mysqli_close($connect);
+                    ?>
+
+
+                    <?php
+
+                    include "connect.php";
+
+
+                    // Check connection
+                    if (!$connect) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $sql = "SELECT A.id, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
+
+                    $result = mysqli_query($connect, $sql);
+
+                    while($row = mysqli_fetch_assoc($result)){
+
+                        $image_src = $row['image'];
+                        $image_name = $row['image_name'];
+
+                    ?>
+                    <div class="carousel-item">
+                        <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
+                    </div>
+
+                    <?php
+
+                    }
+                    mysqli_close($connect);
+
+                    ?>
+
+                 
                 </div>
                 <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#lb-gallery3-7">
                   <span class="mbri-left mbr-iconfont" aria-hidden="true"></span>
