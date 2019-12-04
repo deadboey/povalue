@@ -27,80 +27,12 @@ body {
   font-size: 1.4em;
 }
 
-/* Gallerie */
-*
-{
-  box-sizing: border-box;
-}
-
-.column {
-  float: left;
-  width: 25%;
-  height: 20%;
-  padding: 1px;
-}
-
-img {
-  width: 100%;
-}
-
-
-/* Karusell
--------------------------------------------------- */
-@media (min-width: 40em) {
-  /* Bump up size of carousel content */
-  .carousel-caption p {
-    margin-bottom: 1.25rem;
-    font-size: 1.25rem;
-    line-height: 1.4;
-  }
-
-  .featurette-heading {
-    font-size: 50px;
-  }
-}
-
-@media (min-width: 62em) {
-  .featurette-heading {
-    margin-top: 7rem;
-  }
-}
-
-.carousel {
-  margin-bottom: 4rem;
-}
-
-.carousel-item {
-  height: 32rem;
-}
-
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 250px;
-}
-
-.marketing .col-lg-4 {
-  margin-bottom: 1.5rem;
+.header {
+  font-family: sans-serif;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  color: white;
   text-align: center;
 }
-.marketing h2 {
-  font-weight: 400;
-}
-.marketing .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
-}
 
-.featurette-divider {
-  margin: 5rem 0; 
-}
-
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -.05rem;
-}
 
