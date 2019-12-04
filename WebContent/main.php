@@ -12,7 +12,7 @@ include("geheim.php");
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="main.css">
   <link rel="canonical" href="https://getbootstrap.com/docs/4.4/">
-	<title>PotValue - Get your Post evaluated</title>
+	<title>PoValue - Get your Post evaluated</title>
 
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
@@ -47,8 +47,8 @@ include("geheim.php");
 <section>
   <div>
     <div class="header" style="background-image: url(img/background.jpg); padding: 5px; width: 100%; height: 10%;" >
-      <h2 class="ue1">WILLKOMMEN BEI POVALUE</h2>
-      <h3 class="ue2">Werden Sie Teil unserer Community und bewerten Bilder anderer Mitglieder!</h3>
+      <b><h2 style="text-align:center; color:white; font-weight: bold;">WILLKOMMEN BEI POVALUE</h2></b>
+      <h3 style="text-align:center; color:white;">Werden Sie Teil unserer Community und bewerten Bilder anderer Mitglieder!</h3>
     </div>
   </div>
 </section>
