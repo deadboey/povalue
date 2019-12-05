@@ -86,42 +86,42 @@ include("geheim.php");
     <form method="post" action="" enctype='multipart/form-data'>
           <a style="color:white; font-weight: bold; margin: 10px;">Bilder hochladen:</a>
               <input type="text" style="background: whitesmoke;" name="image_name" id="image_name" placeholder="Geben Sie einen Bildtitel ein" />
-              <input type="file" id="file" value="Bild auswählen" />
+              <input type="file" id="file" value="Bild auswählen" name="file"/>
               <input type="submit" class="upload" value="Hochladen" name="but_upload"/>
     </form>
   </div>
 </section>
 
-      <?php
-      include("connect.php");
+    <?php
+    include("connect.php");
 
-      if(isset($_POST['but_upload'])){
+    if(isset($_POST['but_upload'])){
 
-          $name = $_FILES['file']['name'];
-          $target_dir = "upload/";
-          $target_file = $target_dir . basename($_FILES['file']['name']);
+        $name = $_FILES['file']['name'];
+        $target_dir = "upload/";
+        $target_file = $target_dir . basename($_FILES['file']['name']);
 
-          // Select file type
-          $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        // Select file type
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-          // Valid file extensions
-          $extensions_arr = array("jpg","jpeg","png","gif");
+        // Valid file extensions
+        $extensions_arr = array("jpg","jpeg","png","gif");
 
-          // Check extension
-          if( in_array($imageFileType,$extensions_arr) ){
-              $image_name = $_POST['image_name'];
-              // Convert to base64
-              $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
-              $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
-              // Insert record
-              $query = "insert into images(image, image_name) values('".$image."', '".$image_name."')";
-              mysqli_query($connect,$query);
-              header("location: main.php");
+        // Check extension
+        if( in_array($imageFileType,$extensions_arr) ){
+            $image_name = $_POST['image_name'];
+            // Convert to base64
+            $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
+            $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+            // Insert record
+            $query = "insert into images(image, image_name) values('".$image."', '".$image_name."')";
+            mysqli_query($connect,$query);
+            header("location: main.php");
 
-          }
+        }
 
-      }
-      ?>
+    }
+    ?>
 
       
 
@@ -133,39 +133,15 @@ include("geheim.php");
           <div class="mbr-gallery-layout-default">
             <div>
                 <div>
-                    <?php
-                    include "connect.php";
-                    // Check connection
-                    if (!$connect) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    $sql = "SELECT A.id,A.image_name, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
-                    $result = mysqli_query($connect, $sql);
-
-                    while($row = mysqli_fetch_assoc($result)){
-                        $image_src = $row['image'];
-                        $image_idmax = $row['id'];
-                        $image_name = $row['image_name'];
-                    ?>
-                    <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                        <div href="#lb-gallery3-7" data-slide-to="0" data-toggle="modal">
-                            <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
-                            <span class="icon-focus"></span>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                    mysqli_close($connect);
-                    ?>
-                    <?php
+                 <?php
                   include "connect.php";
                   // Check connection
                   if (!$connect) {
                       die("Connection failed: " . mysqli_connect_error());
                   }
-                  $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
+                  $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id ORDER BY id DESC";
                   $result = mysqli_query($connect, $sql);
-                  $itemno = 1;
+                  $itemno = 0;
 
                   while($row = mysqli_fetch_assoc($result)){
                       $image_src = $row['image'];
