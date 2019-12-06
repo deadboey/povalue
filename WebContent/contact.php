@@ -54,24 +54,33 @@ include("geheim.php");
               <div class="contact-image">
                   <img src="img/brief.png" alt="rocket_contact"/>
               </div>
-              <form method="post">
+               <form method="post">
                   <h3 style="font-weight: bold;">Schreibe eine Nachricht an uns!</h3>
                  <div class="row">
                       <div class="col-md-6">
+                            <div class="form-group">
+                              <input type="text" id="name" class="form-control" placeholder="Name" value="" />
+                          </div>
+                             <div class="form-group">
+                              <input type="text" id="email" class="form-control" placeholder="Email" value="" />
+                          </div>
                           <div class="form-group">
-                              <input type="text" name="txtThema" class="form-control" placeholder="Thema *" value="" />
+                              <input type="text" id="subject" class="form-control" placeholder="Betreff" value="" />
                           </div>
                           <div class="form-group" style="padding-top: 13%;">
-                              <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                              <input type="button" onclick="sendEmail()"  class="btnContact" value="Nachricht Senden" />
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                              <textarea id="body" class="form-control" placeholder="Ihre Nachricht an uns" style="width: 100%; height: 150px;"></textarea>
                           </div>
                       </div>
                   </div>
               </form>
+
+
+              
   </div>   
 
 
@@ -80,5 +89,46 @@ include("geheim.php");
 
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    </body>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+ <script type="text/javascript">
+        function sendEmail() {
+            var name = $("#name");
+            var email = $("#email");
+            var subject = $("#subject");
+            var body = $("#body");
+
+            if ( isNotEmpty(subject) && isNotEmpty(body)) {
+                $.ajax({
+                   url: 'sendEmail.php',
+                   method: 'POST',
+                   dataType: 'json',
+                   data: {
+                       name: name.val(),
+                       email: email.val(),
+                       subject: subject.val(),
+                       body: body.val()
+                   }, success: function (response) {
+                        if (response.status == "success")
+
+                            alert('Email wurde versendet!');
+                       
+                   }
+                });
+            }
+        }
+
+        function isNotEmpty(caller) {
+            if (caller.val() == "") {
+                caller.css('border', '1px solid red');
+                return false;
+            } else
+                caller.css('border', '');
+
+            return true;
+        }
+    </script>
+  
+  
+  
+  </body>
 </html>
