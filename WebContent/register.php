@@ -25,12 +25,8 @@ if($passwort == $passwort_check) {
         if (mysqli_query($connect, $user_info))
 
         {
-
-
-            echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Vielen Dank! Ihre Registrierung war erfolgreich.');
-    window.location.href='index.php';
-    </script>");
+            $status = "success";
+            $response = "Email versendet!";
         }
         else {
             echo ("<script LANGUAGE='JavaScript'>

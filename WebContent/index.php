@@ -39,18 +39,18 @@ include("connect.php");
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form id="login-form" action="login.php" method="post" role="form" style="display: block;">
+                                        <form id="login-form" method="post" role="form" style="display: block;">
                                             <div class="form-group">
-                                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Adresse" value="">
+                                                <input type="email"  id="email_log" tabindex="1" class="form-control" placeholder="Email Adresse" value="">
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" name="passwort" id="password" tabindex="2" class="form-control" placeholder="Passwort">
+                                                <input type="password" id="password_log" tabindex="2" class="form-control" placeholder="Passwort">
                                             </div>
                                             
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-6 col-sm-offset-3">
-                                                        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Log In" form-action="login.php" method="post">Log In</button>
+                                                         <input type="button" onclick="login()"  class="btn btn-lg btn-primary btn-block" value="Log In" />                                            
                                                     </div>
                                                 </div>
                                             </div>
@@ -99,8 +99,60 @@ include("connect.php");
             <div class="text-center">
                     <p class="mt-5 mb-3 text-muted" >&copy; 2019 PoValue</p>
             </div>
-
+       <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="logreg.js"></script>
+
+  
+    <script type="text/javascript">
+
+     
+
+        function login() {
+            
+            var email = $("#email_log");
+            var password = $("#password_log");
+              
+            if (isNotEmptyLog(email) && isNotEmptyLog(password)) {
+                
+                $.ajax({
+                   url: 'login.php',
+                   method: 'POST',
+                   dataType: 'json',
+                   data: {
+                       email: email.val(),
+                       password: password.val()
+                    }, success: function (response) {
+                        if (response.status == "success")
+                            alert('Login Erfolgreich!');
+                            window.location.href = "main.php";
+                       if (response.status == "wrongpassword")
+                           alert('Falsches Passwort!')
+
+                       if (response.status == "wrongemail")
+                           alert('E-Mail Adresse unbekannt')
+            
+
+                       
+
+                       
+                   }
+                });
+            }
+        }
+
+        function isNotEmptyLog(caller) {
+            if (caller.val() == "") {
+                caller.css('border', '1px solid red');
+                return false;
+            } else
+                caller.css('border', '');
+
+            return true;
+            }
+
+    </script>
+
+
 </body>

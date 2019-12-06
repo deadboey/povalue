@@ -1,6 +1,6 @@
 <?php
 include("connect.php");
-$passwort = $_POST['passwort'];
+$passwort = $_POST['password'];
 
    session_start();
 
@@ -27,26 +27,23 @@ $passwort = $_POST['passwort'];
 
               $_SESSION['user'] = $name;
               $_SESSION['id'] = $ID;
-              $_SESSION['email'] = $email;
 
-
-              header("refresh:1;main.php");
+              $status = "success";
+              $response = "Login Erfolgreich";
 
           } else {
 
-              echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Das Passwort ist Falsch. Bitte versuchen Sie es erneut.');
-    window.location.href='index.php';
-    </script>");
+              $status = "wrongpassword";
+              $response = "Login fehlgeschlagen";
 
           }
 
       }else {
 
-          echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Die E-Mail Adresse ist leider nicht vergeben. Bitte versuchen Sie es erneut.');
-    window.location.href='index.php';
-    </script>");
+          $status = "wrongemail";
+          $response = "Login fehlgeschlagen";
+
       }
+      exit(json_encode(array("status" => $status, "response" => $response)));
    }
 ?>
