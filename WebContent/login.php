@@ -21,11 +21,13 @@ $passwort = $_POST['passwort'];
           $name = $row['vorname'];
           $ID = $row['ID'];
           $password_hash = $row['passwort'];
+          $email = $row['email'];
 
           if (password_verify($passwort, $password_hash)){
 
               $_SESSION['user'] = $name;
               $_SESSION['id'] = $ID;
+              $_SESSION['email'] = $email;
 
 
               header("refresh:1;main.php");

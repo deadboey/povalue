@@ -1,3 +1,7 @@
+﻿<?php
+include("geheim.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
