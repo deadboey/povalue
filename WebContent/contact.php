@@ -97,7 +97,7 @@ include("geheim.php");
             var subject = $("#subject");
             var body = $("#body");
 
-            if ( isNotEmpty(subject) && isNotEmpty(body)) {
+            if ( isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)) {
                 $.ajax({
                    url: 'sendEmail.php',
                    method: 'POST',
