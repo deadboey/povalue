@@ -1,60 +1,30 @@
-    <?php
+<?php
     include("connect.php");
-
     session_start();
-    $passwort = $_POST['passwort'];
-    $passwort_check = $_POST['passwort_check'];
-    $password_hash=password_hash($_POST['passwort'], PASSWORD_DEFAULT);
 
+    $password_hash=password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+    $_email = mysqli_real_escape_string($connect,$_POST['email']);
+    $_sql = "SELECT * from user Where email='".$_email."';";
+    $result = mysqli_query($connect, $_sql);
+    $count = mysqli_num_rows($result);
+    $status = "mailexists";
+    $response = "E-Mail ist bereits vergeben";
+    if($count == 0) {
 
-if (!$connect)
-	{
-	die('Connection Failed: ' . mysqli_error());
-	}
-
-
-
-$user_info ="INSERT INTO USER (`email`, `passwort`, `vorname`, `nachname`)
-			VALUES ('".$_POST["email"]."','".$password_hash."','".$_POST["vorname"]."','".$_POST["nachname"]."');";
-
-if($passwort == $passwort_check) {
-
-    if(strlen($passwort) >= 7) {
+        $user_info ="INSERT INTO USER (`email`, `passwort`, `vorname`, `nachname`) VALUES ('".$_POST["email"]."','".$password_hash."','".$_POST["firstname"]."','".$_POST["lastname"]."');";
 
         if (mysqli_query($connect, $user_info))
 
         {
+
             $status = "success";
-            $response = "Email versendet!";
-        }
-        else {
-            echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Entschuldigung. Die E-Mail Adresse ist bereits vergeben.');
-    window.location.href='index.php';
-    </script>");
+            $response = "Registrierung Erfolgreich";
 
         }
-
-    } else {
-        echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Das Passwort ist leider zu kurz. Es muss mindestens 7 Zeichen lang sein.');
-    window.location.href='index.php';
-    </script>");
-
     }
 
-} else {
-
-    echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Die Passwörter stimmen leider nicht überein. Bitte versuchen Sie es erneut.');
-    window.location.href='index.php';
-    </script>");
-
-}
-
-
+    exit(json_encode(array("status"=>$status,"response"=>$response)));
 
 ?>
-
 

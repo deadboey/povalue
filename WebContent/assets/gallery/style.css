@@ -3,21 +3,28 @@
    Gallery
 
 -------*/
+-------*/
 .mbr-gallery .mbr-gallery-item {
-  position: relative;
-  display: inline-block;
-  width: 10%;
-  height: 15vh;
-  padding: 1px;
-  overflow: hidden;
-  cursor: pointer; }
+    position: relative;
+    display: inline-block;
+    width: 10%;
+    height: 15vh;
+    padding: 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
-  .mbr-gallery .mbr-gallery-item {
-    width: 50%; } }
+    .mbr-gallery .mbr-gallery-item {
+        width: 50%;
+    }
+}
+
 @media (max-width: 400px) {
-  .mbr-gallery .mbr-gallery-item {
-    width: 100%; } }
+    .mbr-gallery .mbr-gallery-item {
+        width: 100%;
+    }
+}
 .mbr-gallery .icon-focus,
 .mbr-gallery .icon-video {
   position: absolute;
