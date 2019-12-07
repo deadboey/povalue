@@ -7,6 +7,7 @@
 }
   
 .gallerycolumn {
+    position: relative;
     display: inline-block;
     width: 10vw;
     height: 10vw;
@@ -16,6 +17,7 @@
 
 .galleryitem {
     max-width: 100%;
+    z-index: 1;
 }
 
 @media screen and (max-width: 800px) {
@@ -30,4 +32,24 @@
         width: 80vw;
         height: 80vw;
     }
+}
+
+span.icon-focus {
+    position: absolute;
+    top: calc(5vw - 32px);
+    left: calc(5vw - 24px);
+    font-family: 'MobiriseIcons';
+    font-size: 3rem;
+    color: #fff;
+    opacity: 0;
+    transition: .2s opacity ease-in-out;
+    z-index: 2;
+}
+
+span.icon-focus::before {
+    content: '\e96b'; 
+}
+
+div.gallerycolumn:hover span.icon-focus {
+    opacity: 1; 
 }

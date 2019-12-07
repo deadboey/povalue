@@ -93,7 +93,7 @@ include("geheim.php");
 ?>
 
 <!-- Content Section -->
-<section id="contentarea" class="mbr-gallery">
+<section id="contentarea">
   <div class="galleryrow">
       <!-- Image Galery Creation PHP Script -->
       <?php
@@ -121,6 +121,7 @@ include("geheim.php");
     </div>
   </div>
   <!-- Lightbox -->
+  <div class="mbr-gallery">
   <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery3-7">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -171,6 +172,7 @@ include("geheim.php");
       </div>
     </div>
   </div>
+            </div>
 </section>
 
 <span class="likebtn-wrapper" data-theme="custom" data-btn_size="30" data-f_size="25" 
