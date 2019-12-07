@@ -17,33 +17,8 @@ include("geheim.php");
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/gallery/style.css">
+  <link rel="stylesheet" href="contentarea.css">
 </head>
-
-  <!---
-    <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="main.php">PoValue <?php echo "heißt dich Willkommen ", $_SESSION['user'], "!" ; ?>  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarsExample01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="main.php">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contact-us.html">Kontakt</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="impressum.html">Impressum</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
---->
 
 <body>
 
@@ -92,36 +67,30 @@ include("geheim.php");
   </div>
 </section>
 
-    <?php
-    include("connect.php");
-
-    if(isset($_POST['but_upload'])){
-
-        $name = $_FILES['file']['name'];
-        $target_dir = "upload/";
-        $target_file = $target_dir . basename($_FILES['file']['name']);
-
-        // Select file type
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-        // Valid file extensions
-        $extensions_arr = array("jpg","jpeg","png","gif");
-
-        // Check extension
-        if( in_array($imageFileType,$extensions_arr) ){
-            $image_name = $_POST['image_name'];
-            // Convert to base64
-            $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
-            $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
-            // Insert record
-            $query = "insert into images(image, image_name) values('".$image."', '".$image_name."')";
-            mysqli_query($connect,$query);
-            header("location: main.php");
-
-        }
-
+<!-- Upload to DB - PHP Script -->
+<?php
+  include("connect.php");
+  if(isset($_POST['but_upload'])){
+    $name = $_FILES['file']['name'];
+    $target_dir = "upload/";
+    $target_file = $target_dir . basename($_FILES['file']['name']);
+    // Select file type
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    // Valid file extensions
+    $extensions_arr = array("jpg","jpeg","png","gif");
+    // Check extension
+    if( in_array($imageFileType,$extensions_arr) ){
+      $image_name = $_POST['image_name'];
+      // Convert to base64
+      $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
+      $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+      // Insert record
+      $query = "insert into images(image, image_name) values('".$image."', '".$image_name."')";
+      mysqli_query($connect,$query);
+      header("location: main.php");
     }
-    ?>
+  }
+?>
 
       
 
@@ -139,14 +108,15 @@ include("geheim.php");
                   if (!$connect) {
                       die("Connection failed: " . mysqli_connect_error());
                   }
-                  $sql = "SELECT id, image_name, image FROM images ORDER BY id DESC";
+                  $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id ORDER BY id DESC";
                   $result = mysqli_query($connect, $sql);
                   $itemno = 0;
 
                   while($row = mysqli_fetch_assoc($result)){
                       $image_src = $row['image'];
                       $image_name = $row['image_name'];
-                      
+
+
                     ?>
                     <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
                         <div href="#lb-gallery3-7" data-slide-to='<?php echo $itemno; ?>' data-toggle="modal">
@@ -185,7 +155,7 @@ include("geheim.php");
                     $result = mysqli_query($connect, $sql);
                     while($row = mysqli_fetch_assoc($result)){
                         $image_src = $row['image'];
-                        $image_id = $row['id'];
+                        $image_idmax = $row['id'];
                         $image_name = $row['image_name'];
                     ?>
                     <div class="carousel-item active">
@@ -215,7 +185,6 @@ include("geheim.php");
 
                         $image_src = $row['image'];
                         $image_name = $row['image_name'];
-                        $image_id = $row['id'];
 
                     ?>
                     <div class="carousel-item">
