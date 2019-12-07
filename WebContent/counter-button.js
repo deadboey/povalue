@@ -1,8 +1,17 @@
-function onCount() {
-    var clicks = Number(document.getElementById("clicks").innerHTML);
+function like(num) {
+    var id = "clicks-" + num;
+    var counter = Number(document.getElementById(id).innerHTML);
     if (document.getElementById("plusfresh").onclick) {
-        clicks += 1;
-        document.getElementById("clicks").innerHTML = clicks;
+        counter += 1;
+        document.getElementById(id).innerHTML = counter;
     } 
-    
+}
+
+function dislike(num) {
+    var id = "clicks-" + num;
+    var counter = Number(document.getElementById(id).innerHTML);
+    if (document.getElementById("plusfresh").onclick) {
+        counter -= 1;
+        document.getElementById(id).innerHTML = counter;
+    } 
 }

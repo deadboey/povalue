@@ -93,144 +93,105 @@ include("geheim.php");
   }
 ?>
 
-      
-
-
-<section class="mbr-gallery mbr-slider-carousel cid-rJFQcPPPSH" id="gallery3-7">
-  <div>
-      <div>
-        <div class="mbr-gallery-row">
-          <div class="mbr-gallery-layout-default">
-            <div>
-                <div>
-                 <?php
-                  include "connect.php";
-                  // Check connection
-                  if (!$connect) {
-                      die("Connection failed: " . mysqli_connect_error());
-                  }
-                  $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id ORDER BY id DESC";
-                  $result = mysqli_query($connect, $sql);
-                  $itemno = 0;
-
-                  while($row = mysqli_fetch_assoc($result)){
-                      $image_src = $row['image'];
-                      $image_name = $row['image_name'];
-
-
-                    ?>
-                    <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                        <div href="#lb-gallery3-7" data-slide-to='<?php echo $itemno; ?>' data-toggle="modal">
-                            <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
-                            <span class="icon-focus"></span>
-                        </div>
-                    </div>
-                  
-                    <?php
-                      $itemno++;
-
-                  }
-                  mysqli_close($connect);
-                    ?>
-                </div>
-            </div>
-            <div class="clearfix">
-            </div>
+<!-- Content Section -->
+<section id="contentarea">
+  <div class="galleryrow">
+      <!-- Image Galery Creation PHP Script -->
+      <?php
+        include("connect.php");
+        $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id ORDER BY id DESC";
+        $result = mysqli_query($connect, $sql);
+        $itemno = 0;
+        while($row = mysqli_fetch_assoc($result)){
+          $image_src = $row['image'];
+          $image_name = $row['image_name'];
+          ?>
+          <div class="gallerycolumn" data-video-url="false">
+            <a href="#gallerysliderContainer" data-slide-to='<?php echo $itemno; ?>' data-toggle="modal">
+              <img class="galleryitem" src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
+              <span class="icon-focus"></span>
+            </a>
           </div>
-        </div><!-- Lightbox -->
-        <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery3-7">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div class="carousel-inner">
-
-                
-
-                    <?php
-                    include "connect.php";
-                    // Check connection
-                    if (!$connect) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
-                    $result = mysqli_query($connect, $sql);
-                    while($row = mysqli_fetch_assoc($result)){
-                        $image_src = $row['image'];
-                        $image_idmax = $row['id'];
-                        $image_name = $row['image_name'];
-                    ?>
-                    <div class="carousel-item active">
-                        <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
-                    </div>
-                    <?php
-                    }
-                    mysqli_close($connect);
-                    ?>
-
-
-                    <?php
-
-                    include "connect.php";
-
-
-                    // Check connection
-                    if (!$connect) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-
-                    $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
-
-                    $result = mysqli_query($connect, $sql);
-
-                    while($row = mysqli_fetch_assoc($result)){
-
-                        $image_src = $row['image'];
-                        $image_name = $row['image_name'];
-
-                    ?>
-                    <div class="carousel-item">
-                        <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
-                    </div>
-
-                    <?php
-
-                    }
-                    mysqli_close($connect);
-
-                    ?>
-                       
-
-
-
-                 
+          <?php
+          $itemno++;
+        }
+        mysqli_close($connect);
+      ?>
+      <div class="clearfix">
+      </div>
+    </div>
+  </div>
+  <!-- Lightbox -->
+  <div data-app-prevent-settings="" class="content-slider modal carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="gallerysliderContainer">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="carousel-inner">
+            <!-- Carousel Creation PHP Script -->
+            <?php
+              include("connect.php");
+              // Generate HTML Block for Active Element
+              $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
+              $result = mysqli_query($connect, $sql);
+              while($row = mysqli_fetch_assoc($result)){
+                $image_src = $row['image'];
+                $image_name = $row['image_name'];
+                ?>
+                <div class="carousel-item active">
+                  <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>'/>
+                  <!-- Form for the Like Button & Counter -->    
+                  <form class="likeContainer">
+                    <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="like(0)" id="plusfresh">
+                      <img src="img/fresh.png" alt="Fresh" width="15px" height="15px">
+                    </button>
+                    <output class="formitem output" id="clicks-0">0</output>
+                    <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="dislike(0)">
+                      <img src="img/dislike.png" alt="Gefällt mir nicht!" width="15px" height="15px">
+                    </button>
+                  </form>
                 </div>
-                <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#lb-gallery3-7">
-                  <span class="mbri-left mbr-iconfont" aria-hidden="true"></span>
-                  <span class="sr-only">Rückwärts</span>
-                </a>
-                <a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#lb-gallery3-7">
-                  <span class="mbri-right mbr-iconfont" aria-hidden="true"></span>
-                  <span class="sr-only">Vorwärts</span>
-                </a>
-                <a class="close" href="#" role="button" data-dismiss="modal">
-                  <span class="sr-only">Schließen</span>
-                </a>
-              </div>
-            </div>
+                <?php
+              }
+              // Generate HTML Blocks for other Elements
+              $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
+              $result = mysqli_query($connect, $sql);
+              $itemno = 1;
+              while($row = mysqli_fetch_assoc($result)){
+                $image_src = $row['image'];
+                $image_name = $row['image_name'];
+                ?>
+                <div class="carousel-item">
+                  <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>'/>
+                  <!-- Form for the Like Button & Counter -->
+                  <form class="likeContainer">
+                    <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="like(<?php echo $itemno?>)" id="plusfresh">
+                      <img src="img/fresh.png" alt="Fresh" width="15px" height="15px">
+                    </button>
+                    <output class="formitem output" id="clicks-<?php echo $itemno ?>">0</output>
+                    <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="dislike(<?php echo $itemno?>)">
+                      <img src="img/dislike.png" alt="Gefällt mir nicht!" width="15px" height="15px">
+                    </button>
+                  </form>
+                </div>
+                <?php
+                $itemno++;
+              }
+              mysqli_close($connect);
+            ?>
           </div>
+          <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#gallerysliderContainer">
+            <span class="mbri-left mbr-iconfont" aria-hidden="true"></span>
+          </a>
+          <a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#gallerysliderContainer">
+            <span class="mbri-right mbr-iconfont" aria-hidden="true"></span>
+          </a>
+          <a class="close" href="#" role="button" data-dismiss="modal">
+          </a>
         </div>
       </div>
+    </div>
   </div>
 </section>
-
-                        <form>
-                          <div id="formation">
-                            <button type="button" class="btn btn-danger" style="margin: 0px;" onClick="onCount()" id="plusfresh">
-                                  <img src="img/fresh.png" alt="Fresh" width="15px" height="15px">
-                            </button>
-                              <textarea rows="1" cols="4" maxlength="4" disabled style="margin-top: 4px;" id="clicks">0</textarea>
-                          </div>
-                        </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
