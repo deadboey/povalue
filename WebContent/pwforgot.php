@@ -1,31 +1,26 @@
 <?php
 include("connect.php");
 
-session_start();
-
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-
     $_email = mysqli_real_escape_string($connect,$_POST['email']);
+    $password_hash=password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $_sql = "SELECT * from user Where email='".$_email."';";
-
-    $result = mysqli_query($connect, $_sql);
-
+    $_abfrage = "SELECT * from user Where email='".$_email."';";
+    $result = mysqli_query($connect, $_abfrage);
     $count = mysqli_num_rows($result);
-    $_SESSION['email'] = $_email;
+    $status = "wrongemail";
+    $response = "email nicht vorhanden";
 
     if($count == 1) {
 
-        header("location:pwsetback.html");
 
-    } else {
+        $_sql = "UPDATE user SET passwort = '".$password_hash."' WHERE email='".$_POST['email']."';";
 
-        echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Entschuldigung. Die E-Mail Adresse ist falsch.');
-    window.location.href='pwforgot.html';
-    </script>");
+        if (mysqli_query($connect, $_sql)) {
+
+            $status = "success";
+            $response = "Email vorhanden";
+
+        }
     }
-
-}
-
+exit(json_encode(array("status"=>$status,"response"=>$response)));
 ?>

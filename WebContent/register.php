@@ -8,6 +8,8 @@
     $_sql = "SELECT * from user Where email='".$_email."';";
     $result = mysqli_query($connect, $_sql);
     $count = mysqli_num_rows($result);
+
+
     $status = "mailexists";
     $response = "E-Mail ist bereits vergeben";
     if($count == 0) {

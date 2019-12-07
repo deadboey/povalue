@@ -47,6 +47,55 @@ function register() {
 }
 
 
+function pwsetback() {
+    var email = $("#email");
+    var password = $("#password");
+    var password_check = $("#password_check");
+    var pass1 = document.getElementById("password");
+    var pass2 = document.getElementById("password_check");
+
+    if (isNotEmptyLog(email) && isNotEmptyLog(password) && isNotEmptyLog(password_check)) {
+
+        if (isShort(password)) {
+
+            if (pass1.value == pass2.value) {
+
+
+                $.ajax({
+
+                    url: 'pwforgot.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+
+                          password: password.val(),
+                          email: email.val(),
+
+                    }, success: function (response) {
+
+                        if (response.status == "success") {
+                            alert('Passwortänderung Erfolgreich!')
+                            window.location.href = "index.php";
+                        }
+
+                        if (response.status == "wrongemail") {
+
+                            alert('E-Mail Adresse unbekannt')
+                        }
+                    }
+                });
+            } else {
+                password.css('border', '2px solid red');
+                password_check.css('border', '2px solid red')
+                alert('Passwörter stimmen nicht überein')
+            }
+        }
+    }
+}
+
+
+
+
 
 function login() {
 
@@ -100,4 +149,26 @@ function isNotEmptyLog(caller) {
         caller.css('border', '');
 
     return true;
+}
+
+
+function like() {
+
+    var like = 1;
+    var id = $("")
+
+    $.ajax({
+
+        url: 'like.php',
+        method: 'POST',
+        dataType: 'json',
+        data: {
+
+            like: like.val(),
+
+        }           
+    });
+
+
+
 }
