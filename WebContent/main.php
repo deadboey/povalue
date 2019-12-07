@@ -17,33 +17,8 @@ include("geheim.php");
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/gallery/style.css">
+  <link rel="stylesheet" href="contentarea.css">
 </head>
-
-  <!---
-    <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="main.php">PoValue <?php echo "heißt dich Willkommen ", $_SESSION['user'], "!" ; ?>  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarsExample01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="main.php">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contact-us.html">Kontakt</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="impressum.html">Impressum</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
---->
 
 <body>
 
@@ -92,164 +67,109 @@ include("geheim.php");
   </div>
 </section>
 
-    <?php
-    include("connect.php");
-
-    if(isset($_POST['but_upload'])){
-
-        $name = $_FILES['file']['name'];
-        $target_dir = "upload/";
-        $target_file = $target_dir . basename($_FILES['file']['name']);
-
-        // Select file type
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-        // Valid file extensions
-        $extensions_arr = array("jpg","jpeg","png","gif");
-
-        // Check extension
-        if( in_array($imageFileType,$extensions_arr) ){
-            $image_name = $_POST['image_name'];
-            // Convert to base64
-            $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
-            $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
-            // Insert record
-            $query = "insert into images(image, image_name) values('".$image."', '".$image_name."')";
-            mysqli_query($connect,$query);
-            header("location: main.php");
-
-        }
-
+<!-- Upload to DB - PHP Script -->
+<?php
+  include("connect.php");
+  if(isset($_POST['but_upload'])){
+    $name = $_FILES['file']['name'];
+    $target_dir = "upload/";
+    $target_file = $target_dir . basename($_FILES['file']['name']);
+    // Select file type
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    // Valid file extensions
+    $extensions_arr = array("jpg","jpeg","png","gif");
+    // Check extension
+    if( in_array($imageFileType,$extensions_arr) ){
+      $image_name = $_POST['image_name'];
+      // Convert to base64
+      $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
+      $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+      // Insert record
+      $query = "insert into images(image, image_name) values('".$image."', '".$image_name."')";
+      mysqli_query($connect,$query);
+      header("location: main.php");
     }
-    ?>
+  }
+?>
 
-      
-
-
-<section class="mbr-gallery mbr-slider-carousel cid-rJFQcPPPSH" id="gallery3-7">
-  <div>
-      <div>
-        <div class="mbr-gallery-row">
-          <div class="mbr-gallery-layout-default">
-            <div>
-                <div>
-                 <?php
-                  include "connect.php";
-                  // Check connection
-                  if (!$connect) {
-                      die("Connection failed: " . mysqli_connect_error());
-                  }
-                  $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id ORDER BY id DESC";
-                  $result = mysqli_query($connect, $sql);
-                  $itemno = 0;
-
-                  while($row = mysqli_fetch_assoc($result)){
-                      $image_src = $row['image'];
-                      $image_name = $row['image_name'];
-
-
-                    ?>
-                    <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false">
-                        <div href="#lb-gallery3-7" data-slide-to='<?php echo $itemno; ?>' data-toggle="modal">
-                            <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
-                            <span class="icon-focus"></span>
-                        </div>
-                    </div>
-                  
-                    <?php
-                      $itemno++;
-
-                  }
-                  mysqli_close($connect);
-                    ?>
-                </div>
-            </div>
-            <div class="clearfix">
+<!-- Content Section -->
+<section id="contentarea" class="mbr-gallery">
+  <div class="galleryrow">
+      <!-- Image Galery Creation PHP Script -->
+      <?php
+        include("connect.php");
+        $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id ORDER BY id DESC";
+        $result = mysqli_query($connect, $sql);
+        $itemno = 0;
+        while($row = mysqli_fetch_assoc($result)){
+          $image_src = $row['image'];
+          $image_name = $row['image_name'];
+          ?>
+          <div class="gallerycolumn" data-video-url="false">
+            <div href="#lb-gallery3-7" data-slide-to='<?php echo $itemno; ?>' data-toggle="modal">
+              <img class="galleryitem" src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
+              <span class="icon-focus"></span>
             </div>
           </div>
-        </div><!-- Lightbox -->
-        <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery3-7">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div class="carousel-inner">
-
-                
-
-                    <?php
-                    include "connect.php";
-                    // Check connection
-                    if (!$connect) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
-                    $result = mysqli_query($connect, $sql);
-                    while($row = mysqli_fetch_assoc($result)){
-                        $image_src = $row['image'];
-                        $image_idmax = $row['id'];
-                        $image_name = $row['image_name'];
-                    ?>
-                    <div class="carousel-item active">
-                        <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
-                    </div>
-                    <?php
-                    }
-                    mysqli_close($connect);
-                    ?>
-
-
-                    <?php
-
-                    include "connect.php";
-
-
-                    // Check connection
-                    if (!$connect) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-
-                    $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
-
-                    $result = mysqli_query($connect, $sql);
-
-                    while($row = mysqli_fetch_assoc($result)){
-
-                        $image_src = $row['image'];
-                        $image_name = $row['image_name'];
-
-                    ?>
-                    <div class="carousel-item">
-                        <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
-                    </div>
-
-                    <?php
-
-                    }
-                    mysqli_close($connect);
-
-                    ?>
-                       
-
-
-
-                 
+          <?php
+          $itemno++;
+        }
+        mysqli_close($connect);
+      ?>
+      <div class="clearfix">
+      </div>
+    </div>
+  </div>
+  <!-- Lightbox -->
+  <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery3-7">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="carousel-inner">
+            <!-- Carousel Creation PHP Script -->
+            <?php
+              include("connect.php");
+              // Generate HTML Block for Active Element
+              $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
+              $result = mysqli_query($connect, $sql);
+              while($row = mysqli_fetch_assoc($result)){
+                $image_src = $row['image'];
+                $image_name = $row['image_name'];
+                ?>
+                <div class="carousel-item active">
+                  <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
                 </div>
-                <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#lb-gallery3-7">
-                  <span class="mbri-left mbr-iconfont" aria-hidden="true"></span>
-                  <span class="sr-only">Rückwärts</span>
-                </a>
-                <a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#lb-gallery3-7">
-                  <span class="mbri-right mbr-iconfont" aria-hidden="true"></span>
-                  <span class="sr-only">Vorwärts</span>
-                </a>
-                <a class="close" href="#" role="button" data-dismiss="modal">
-                  <span class="sr-only">Schließen</span>
-                </a>
-              </div>
-            </div>
+                <?php
+              }
+              // Generate HTML Blocks for other Elements
+              $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
+              $result = mysqli_query($connect, $sql);
+              while($row = mysqli_fetch_assoc($result)){
+                $image_src = $row['image'];
+                $image_name = $row['image_name'];
+                ?>
+                <div class="carousel-item">
+                  <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>' />
+                </div>
+                <?php
+              }
+              mysqli_close($connect);
+            ?>
           </div>
+          <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#lb-gallery3-7">
+            <span class="mbri-left mbr-iconfont" aria-hidden="true"></span>
+            <span class="sr-only">Rückwärts</span>
+          </a>
+          <a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#lb-gallery3-7">
+            <span class="mbri-right mbr-iconfont" aria-hidden="true"></span>
+            <span class="sr-only">Vorwärts</span>
+          </a>
+          <a class="close" href="#" role="button" data-dismiss="modal">
+            <span class="sr-only">Schließen</span>
+          </a>
         </div>
       </div>
+    </div>
   </div>
 </section>
 

@@ -1,0 +1,33 @@
+#contentarea {
+    box-sizing: border-box;
+}
+  
+.galleryrow {
+    text-align: left;
+}
+  
+.gallerycolumn {
+    display: inline-block;
+    width: 10vw;
+    height: 10vw;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.galleryitem {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .gallerycolumn {
+        width: 25vw;
+        height: 25vw;
+    }
+}
+  
+@media screen and (max-width: 400px) {
+    .gallerycolumn {
+        width: 80vw;
+        height: 80vw;
+    }
+}
