@@ -225,13 +225,10 @@ include("geheim.php");
 
                         <form>
                           <div id="formation">
-                              <button type="button" class="btn btn-success" style="margin: 0px;" onClick="onLike()">
-                                <img src="img/like.png" alt="Gefällt mir!" width="15px" height="15px">
-                              </button>
-                              <textarea rows="1" cols="4" maxlength="4" disabled style="margin-top: 4px;" id="clicks"></textarea>
-                              <button type="button" class="btn btn-danger" style="margin: 0px;" onClick="onDislike()">
-                                  <img src="img/dislike.png" alt="Gefällt mir nicht!" width="15px" height="15px">
-                              </button>
+                            <button type="button" class="btn btn-danger" style="margin: 0px;" onClick="onCount()" id="plusfresh">
+                                  <img src="img/fresh.png" alt="Fresh" width="15px" height="15px">
+                            </button>
+                              <textarea rows="1" cols="4" maxlength="4" disabled style="margin-top: 4px;" id="clicks">0</textarea>
                           </div>
                         </form>
 
