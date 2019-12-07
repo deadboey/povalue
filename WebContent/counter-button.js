@@ -1,11 +1,11 @@
 function onLike() {
     var clicks = 0;
     clicks += 1;
-    document.getElementById("click").innerHTML = click;
+    document.getElementById("clicks").innerHTML = clicks;
 }
 
 function onDislike() {
     var clicks = 0;
     clicks -= 1;
-    document.getElementById("click").innerHTML = click;
+    document.getElementById("clicks").innerHTML = clicks;
 }
