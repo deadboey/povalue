@@ -67,7 +67,7 @@ include("geheim.php");
                           <div class="form-group">
                               <input type="text" id="subject" class="form-control" placeholder="Betreff" value="" />
                           </div>
-                          <div class="form-group" style="padding-top: 13%;">
+                          <div class="form-group">
                               <input type="button" onclick="sendEmail()"  class="btnContact" value="Nachricht Senden" />
                           </div>
                       </div>
