@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 include("connect.php");
 include("geheim.php");
@@ -131,11 +131,12 @@ include("geheim.php");
             <?php
               include("connect.php");
               // Generate HTML Block for Active Element
-              $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id = (select MAX(B.id) from images as B)";
+              $sql = "SELECT A.id, A.image_name, A.image, A.likes FROM images as A where A.id = (select MAX(B.id) from images as B)";
               $result = mysqli_query($connect, $sql);
               while($row = mysqli_fetch_assoc($result)){
                 $image_src = $row['image'];
                 $image_name = $row['image_name'];
+                $image_likes = $row['likes'];
                 ?>
                 <div class="carousel-item active">
                   <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>'/>
@@ -144,7 +145,7 @@ include("geheim.php");
                     <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="like(0)" id="plusfresh">
                       <img src="img/fresh.png" alt="Fresh" width="15px" height="15px">
                     </button>
-                    <output class="formitem output" id="clicks-0">0</output>
+                    <output class="formitem output" id="clicks-0"><?php echo $image_likes; ?></output>
                     <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="dislike(0)">
                       <img src="img/dislike.png" alt="Gefällt mir nicht!" width="15px" height="15px">
                     </button>
@@ -153,12 +154,13 @@ include("geheim.php");
                 <?php
               }
               // Generate HTML Blocks for other Elements
-              $sql = "SELECT A.id, A.image_name, A.image FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
+              $sql = "SELECT A.id, A.image_name, A.image, A.likes FROM images as A where A.id <> (select MAX(B.id) from images as B) ORDER BY id DESC";
               $result = mysqli_query($connect, $sql);
               $itemno = 1;
               while($row = mysqli_fetch_assoc($result)){
                 $image_src = $row['image'];
                 $image_name = $row['image_name'];
+                $image_likes = $row['likes'];
                 ?>
                 <div class="carousel-item">
                   <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>'/>
@@ -167,8 +169,8 @@ include("geheim.php");
                     <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="like(<?php echo $itemno?>)" id="plusfresh">
                       <img src="img/fresh.png" alt="Fresh" width="15px" height="15px">
                     </button>
-                    <output class="formitem output" id="clicks-<?php echo $itemno ?>">0</output>
-                    <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="dislike(<?php echo $itemno?>)">
+                    <output class="formitem output" id="clicks-<?php echo $itemno ?>"><?php echo $image_likes; ?></output>
+                    <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="dislike(<?php echo $itemno?>)"id="plusfresh">
                       <img src="img/dislike.png" alt="Gefällt mir nicht!" width="15px" height="15px">
                     </button>
                   </form>
@@ -204,7 +206,7 @@ include("geheim.php");
   <script src="assets/gallery/player.min.js"></script>
   <script src="assets/gallery/script.js"></script>
   <script src="assets/slidervideo/script.js"></script>
-  <script src="counter-button.js"></script>
+  <script src="functions.js"></script>
 
 </body>
 </html>

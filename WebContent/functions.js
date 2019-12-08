@@ -151,24 +151,20 @@ function isNotEmptyLog(caller) {
     return true;
 }
 
+function like(num) {
+    var id = "clicks-" + num;
+    var counter = Number(document.getElementById(id).innerHTML);
+    if (document.getElementById("plusfresh").onclick) {
+        counter += 1;
+        document.getElementById(id).innerHTML = counter;
+    }
+}
 
-function like() {
-
-    var like = 1;
-    var id = $("")
-
-    $.ajax({
-
-        url: 'like.php',
-        method: 'POST',
-        dataType: 'json',
-        data: {
-
-            like: like.val(),
-
-        }           
-    });
-
-
-
+function dislike(num) {
+    var id = "clicks-" + num;
+    var counter = Number(document.getElementById(id).innerHTML);
+    if (document.getElementById("plusfresh").onclick) {
+        counter -= 1;
+        document.getElementById(id).innerHTML = counter;
+    }
 }
