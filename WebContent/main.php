@@ -18,6 +18,7 @@ include("geheim.php");
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/gallery/style.css">
   <link rel="stylesheet" href="contentarea.css">
+  <link rel="stylesheet" href="popup.css">
 
 </head>
 
@@ -59,12 +60,24 @@ include("geheim.php");
 
 <section id="row">
   <div style="height: 10%; background: #343a40; max-height: 20%">
-    <form method="post" action="" enctype='multipart/form-data'>
-          <a style="color:white; font-weight: bold; margin-left: 25%" >Bilder hochladen (max. 1MB):</a>
+    <!-- [POPUP BOX] -->
+    <div id="pop-up">
+      <div id="pop-box">
+        <div id="pop-close" onclick="pop.close()">X</div>
+        <h1 id="pop-title"></h1>
+        <br>
+        <div id="pop-text"></div>
+              <hr>
+             <form method="post" action="" enctype='multipart/form-data'>
               <input type="text" style="background: whitesmoke;" name="image_name" id="image_name" placeholder="Geben Sie einen Bildtitel ein" />
+              <br>
               <input type="file" id="file" value="Bild auswählen" name="file"/>
-              <input type="submit" class="upload" value="Hochladen" name="but_upload"/>
-    </form>
+              <hr>
+              <input type="submit" class="btn btn-dark" value="Hochladen" name="but_upload"/>
+            </form>
+      </div>
+    </div>
+    <input type="button" class="btn btn-colors" value="Klicke hier um Bilder hochzuladen (max. 1MB)" onclick="pop.open('Bilder hochladen', 'Wir freuen uns über neue Bilder. Beachten Sie die festgelegte maximale Göße von 1MB pro Bild. Danke!')"/>
   </div>
 </section>
 
@@ -207,6 +220,7 @@ include("geheim.php");
   <script src="assets/gallery/script.js"></script>
   <script src="assets/slidervideo/script.js"></script>
   <script src="functions.js"></script>
+  <script src="popup.js"></script>
 
 </body>
 </html>

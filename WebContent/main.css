@@ -50,3 +50,14 @@ body {
 .row {
   margin-bottom: 150px;
 }
+
+.btn {
+  margin: 0px !important;
+  width: 100% !important;
+}
+
+.btn-colors {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
