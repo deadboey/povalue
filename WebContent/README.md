@@ -20,12 +20,12 @@ PoValue bietet eine Platform für registrierte Nutzer, auf der diese Memes (Bild
 ## Installationsguide
 ### für eine lokale Installation mit XAMPP
 1. XAMPP herunterladen und installieren.
-2. Das Repo im XAMPP Verzeichnis in den Unterordner --htdocs-- klonen.
+2. Das Repository im XAMPP Verzeichnis in den Unterordner **htdocs** klonen.
 3. xampp-control.exe ausführen.
 4. Apache und MySQL Modul starten.
 5. im Browser /localhost/phpmyadmin öffnen.
 6. Neue Datenbank mit dem Namen 'povalueuser' erstellen und auswählen
-7. Die Datei setup.sql importieren.
+7. Die Datei **setup.sql** importieren.
 8. PoValue kann nun lokal unter http://localhost/povalue/webcontent/index.php erreicht werden.
 
 ## Teammitglieder
