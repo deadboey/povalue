@@ -1,4 +1,4 @@
-# PoValue
+# PovValue
 ## Web-Programmierung Projekt Repo
 PoValue bietet eine Platform für registrierte Nutzer, auf der diese Memes (Bilddateien) hochladen können, welche widerum von anderen Nutzern bewertet werden können (like/dislike)
 
