@@ -1,6 +1,8 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
 if (isset($_POST['name']) && isset($_POST['email'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -23,6 +25,7 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
     $mail->Password = 'Nfcukp44';
     $mail->Port = 465; //587
     $mail->SMTPSecure = "ssl"; //tls
+    $mail->SMTPDecub = 2;
 
 
 
@@ -38,9 +41,16 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
         $response = "Email versendet!";
     } else {
         $status = "failed";
-        $response = "Etwas ist fehlgeschlagen: <br><br>" . $mail->ErrorInfo;
+        $response = "Etwas ist fehlgeschlagen: " . $mail->ErrorInfo;
     }
 
     exit(json_encode(array("status" => $status, "response" => $response)));
+    }
+    } else {
+        // Redirect to login or main (when signed in)
+        include('geheim.php');
+        if(array_key_exists("id", $_SESSION)) {
+            header("location: main.php"); 
+        }
     }
 ?>

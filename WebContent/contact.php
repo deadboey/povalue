@@ -50,7 +50,7 @@ include("geheim.php");
         <h3>Dein PoValue-Team</h3>
       </div>
     </section>
-    
+    <section id="contact">
     <div class="container contact-form">
       <div class="contact-image">
         <img id="envelope" src="img/brief.png" alt="rocket_contact"/>
@@ -79,7 +79,8 @@ include("geheim.php");
           </div>
         </div>
       </form>        
-    </div>   
+    </div>
+    </section>   
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -109,7 +110,10 @@ include("geheim.php");
               body: body.val()
             }, success: function (response) {
               if (response.status == "success")
-                alert('Email wurde versendet!');         
+                alert(response.response);
+              else {
+                alert(response.response);
+              }         
             }
           });
         }

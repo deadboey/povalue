@@ -1,4 +1,5 @@
 <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include("connect.php");
     $passwort = $_POST['password_log'];
     session_start();
@@ -28,4 +29,11 @@
             }
     }
     exit(json_encode(array("status" => $status, "response" => $response)));
+    } else {
+    // Redirect to login or main (when signed in)
+    include('geheim.php');
+    if(array_key_exists("id", $_SESSION)) {
+        header("location: main.php"); 
+    }
+}
 ?>

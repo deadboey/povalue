@@ -1,5 +1,7 @@
 <?php
-include("connect.php");
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    include("connect.php");
 
     $_email = mysqli_real_escape_string($connect,$_POST['email']);
     $password_hash=password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -22,5 +24,12 @@ include("connect.php");
 
         }
     }
-exit(json_encode(array("status"=>$status,"response"=>$response)));
+    exit(json_encode(array("status"=>$status,"response"=>$response)));
+    } else {
+    // Redirect to login or main (when signed in)
+    include('geheim.php');
+    if(array_key_exists("id", $_SESSION)) {
+        header("location: main.php"); 
+    }
+}
 ?>
