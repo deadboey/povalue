@@ -88,45 +88,5 @@ include("geheim.php");
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    
-    <!-- JS Funktionen-->
-    <script type="text/javascript">
-      // Email senden
-      function sendEmail() {
-        var name = $("#name");
-        var email = $("#email");
-        var subject = $("#subject");
-        var body = $("#body");
-        // Alle Felder ausgefüllt?
-        if ( isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)) {
-          $.ajax({
-            url: 'sendEmail.php',
-            method: 'POST',
-            dataType: 'json',
-            data: {
-              name: name.val(),
-              email: email.val(),
-              subject: subject.val(),
-              body: body.val()
-            }, success: function (response) {
-              if (response.status == "success")
-                alert(response.response);
-              else {
-                alert(response.response);
-              }         
-            }
-          });
-        }
-      }
-      // Highlight nicht ausgefüllter Felder
-      function isNotEmpty(caller) {
-        if (caller.val() == "") {
-          caller.css('border', '1px solid red');
-          return false;
-        } else
-          caller.css('border', '');
-          return true;
-        }
-    </script>
-  </body>
-</html>
+    <script src="functions.js"></script>
+   

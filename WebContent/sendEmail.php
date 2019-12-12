@@ -46,11 +46,7 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
 
     exit(json_encode(array("status" => $status, "response" => $response)));
     }
-    } else {
-        // Redirect to login or main (when signed in)
-        include('geheim.php');
-        if(array_key_exists("id", $_SESSION)) {
-            header("location: main.php"); 
-        }
-    }
+    }  else
+{   include("geheim.php"); 
+}
 ?>

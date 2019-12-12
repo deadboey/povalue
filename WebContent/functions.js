@@ -121,6 +121,37 @@ function isNotEmptyLog(caller) {
         caller.css('border', '');
     return true;
 }
+
+// Email senden
+function sendEmail() {
+    var name = $("#name");
+    var email = $("#email");
+    var subject = $("#subject");
+    var body = $("#body");
+    // Alle Felder ausgefüllt?
+    if (isNotEmptyLog(name) && isNotEmptyLog(email) && isNotEmptyLog(subject) && isNotEmptyLog(body)) {
+        $.ajax({
+            url: 'sendEmail.php',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                name: name.val(),
+                email: email.val(),
+                subject: subject.val(),
+                body: body.val()
+            }, success: function (response) {
+                if (response.status == "success")
+                    alert(response.response);
+                else {
+                    alert(response.response);
+                }
+            }
+        });
+    }
+}
+
+
+
 // Like Button
 function like(num) {
     var id = "clicks-" + num;
