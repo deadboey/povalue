@@ -211,7 +211,7 @@
     <script src="assets/gallery/player.min.js"></script>
     <script src="assets/gallery/script.js"></script>
     <script src="assets/slidervideo/script.js"></script>
+    
     <script src="functions.js"></script>
-    <script src="popup.js"></script>
   </body>
 </html>
