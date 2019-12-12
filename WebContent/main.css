@@ -61,3 +61,45 @@ body {
   background-color: #343a40;
   border-color: #343a40;
 }
+
+.header {
+  background-image: url(img/background.jpg); 
+  padding: 5px; 
+  width: 100%; 
+  height: 10%;
+}
+
+.header h2 {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.header h3 {
+  text-align: center;
+  color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar .navbar-brand {
+    visibility: hidden;
+  }
+  .navbar .navbar-toggler {
+    position: absolute;
+    top: 10px;
+  }
+  .header h2,
+  .header h3 {
+    font-size: medium;
+  }
+  #impressum p {
+    text-align: justify;
+  }
+  #impressum h2 {
+    font-size: large;
+    font-weight: bold;
+  }
+  #impressum h1 {
+    font-size: x-large;
+  }
+}

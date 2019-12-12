@@ -1,5 +1,4 @@
 $(function() {
-
     $('#login-form-link').click(function(e) {
 		$("#login-form").delay(100).fadeIn(100);
  		$("#register-form").fadeOut(100);
@@ -14,5 +13,4 @@ $(function() {
 		$(this).addClass('active');
 		e.preventDefault();
 	});
-
 });
