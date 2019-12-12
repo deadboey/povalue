@@ -51,12 +51,12 @@ body {
   margin-bottom: 150px;
 }
 
-.btn {
+#row .btn {
   margin: 0px !important;
   width: 100% !important;
 }
 
-.btn-colors {
+#row .btn-colors {
   color: #fff;
   background-color: #343a40;
   border-color: #343a40;

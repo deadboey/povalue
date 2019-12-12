@@ -1,5 +1,5 @@
 <?php
-    include(geheim.php);
+    include('geheim.php');
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
                   <a class="nav-link" href="contact-us.html">Kontakt</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="impressum.html">Impressum<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="impressum.php">Impressum<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="logout.php">Logout</a>

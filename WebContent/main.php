@@ -39,7 +39,7 @@ include("geheim.php");
         <a class="nav-link" href="contact.php">Kontakt</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="impressum.html">Impressum</a>
+        <a class="nav-link" href="impressum.php">Impressum</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="logout.php">Logout</a>
@@ -155,11 +155,11 @@ include("geheim.php");
                   <img src='<?php echo $image_src; ?>' title='<?php echo $image_name; ?>'/>
                   <!-- Form for the Like Button & Counter -->    
                   <form class="likeContainer">
-                    <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="like(0)" id="plusfresh">
+                    <button type="button" class="btn-danger formitem" style="margin: 0px;" onClick="like(0)" id="plusfresh">
                       <img src="img/fresh.png" alt="Fresh" width="15px" height="15px">
                     </button>
                     <output class="formitem output" id="clicks-0"><?php echo $image_likes; ?></output>
-                    <button type="button" class="btn btn-danger formitem" style="margin: 0px;" onClick="dislike(0)">
+                    <button type="button" class="btn-danger formitem" style="margin: 0px;" onClick="dislike(0)">
                       <img src="img/dislike.png" alt="Gefällt mir nicht!" width="15px" height="15px">
                     </button>
                   </form>

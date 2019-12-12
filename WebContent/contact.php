@@ -31,7 +31,7 @@ include("geheim.php");
                   <a class="nav-link" href="contact-us.html">Kontakt<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="impressum.html">Impressum</a>
+                  <a class="nav-link" href="impressum.php">Impressum</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="logout.php">Logout</a>
