@@ -60,7 +60,7 @@
                 <p class="adsimple-321133703">
                   <strong>Tel.:</strong> 0751189990000<br />
                   <strong>Fax:</strong> 0751189990001<br />
-                  <strong>E-Mail:</strong> <a href="mailto:povalue@gmx.de">kontakt-povalue@gmx.de</a>
+                  <strong>E-Mail:</strong> <a href="mailto:povalue@gmx.de">povalue@gmx.de</a>
                 </p>
                 <p class="adsimple-321133703">
                   <strong>Aufsichtsbehörde</strong>
