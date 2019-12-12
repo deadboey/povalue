@@ -92,10 +92,8 @@ function login() {
                 password_log: password_log
             }, success: function (response) {
 
-                if (response.status == "success") {
-                    alert('Login Erfolgreich!');
+                if (response.status == "success") 
                     window.location.href = "main.php";
-                }
                 if (response.status == "wrongpassword")
                     alert('Falsches Passwort!')
                 if (response.status == "wrongemail")
@@ -141,3 +139,43 @@ function dislike(num) {
         document.getElementById(id).innerHTML = counter;
     }
 }
+
+
+// Login / Registration Switch
+$(function() {
+
+    $('#login-form-link').click(function(e) {
+		$("#login-form").delay(100).fadeIn(100);
+ 		$("#register-form").fadeOut(100);
+		$('#register-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('#register-form-link').click(function(e) {
+		$("#register-form").delay(100).fadeIn(100);
+ 		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+
+});
+
+// Popup
+var pop = {
+    open : function (title, text) {
+    // open() : open the popup
+    // PARAM title : title of popup box
+    //       text : text
+  
+      document.getElementById("pop-title").innerHTML = title;
+      document.getElementById("pop-text").innerHTML = text;
+      document.getElementById("pop-up").classList.add("open");
+    },
+  
+    close : function () {
+    // close() : close the popup
+  
+      document.getElementById("pop-up").classList.remove("open");
+    }
+};

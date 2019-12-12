@@ -9,15 +9,14 @@
 	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="main.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/">
-	  <title>PoValue - Get your Post evaluated</title>
+    
+    <title>PoValue - Get your Post evaluated</title>
 
     <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
     <link rel="stylesheet" href="assets/theme/css/style.css">
     <link rel="stylesheet" href="assets/gallery/style.css">
-    <link rel="stylesheet" href="contentarea.css">
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="main.css">
   </head>
 
   <body>

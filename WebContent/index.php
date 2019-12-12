@@ -10,11 +10,11 @@ if(array_key_exists("id", $_SESSION)) {
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="logreg.css" />
+        <link rel="stylesheet" href="main.css" />
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
         <title>Anmeldung</title>
     </head>
-    <body>
+    <body id='logreg'>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">

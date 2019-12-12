@@ -2,31 +2,26 @@ body {
   padding-bottom: 0px;
   margin: 0;
 }
-
 .navbar {
   margin-bottom: 0px;
   margin-top: 0px;
 }
-
 .jumbotron {
   margin-top: 0px;
   margin-bottom: 0px;
   max-height: 30%;
 }
-
 .container {
   margin-bottom: 0px;
   margin-top: 0px;
   max-height: 1rem;
   font-size: 0.8em;
 }
-
 .headline {
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 1.4em;
 }
-
 .upload {
 	background-color:whitesmoke;
 	border-radius:10px;
@@ -46,41 +41,458 @@ body {
 	position:relative;
 	top:1px;
 }
-
 .row {
-  margin-bottom: 150px;
+  height: auto;
 }
-
 #row .btn {
   margin: 0px !important;
   width: 100% !important;
 }
-
 #row .btn-colors {
   color: #fff;
   background-color: #343a40;
   border-color: #343a40;
 }
-
 .header {
   background-image: url(img/background.jpg); 
   padding: 5px; 
   width: 100%; 
   height: 10%;
 }
-
 .header h2 {
   text-align: center;
   color: white;
   font-weight: bold;
 }
-
 .header h3 {
   text-align: center;
   color: white;
 }
 
+/* [WRAPPER & BACKGROUND] */
+#pop-up {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+#pop-up.open {
+  display: block;
+}
+
+/*--------
+  POPUP
+---------*/
+/* [BOX] */
+#pop-box {
+  position: relative;
+  background: #fff;
+  margin: 35vh auto 10vh auto;
+  padding: 10px;
+  max-width: 400px;
+}
+/* [CLOSE BUTTON] */
+#pop-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #a83232;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+/* [TITLE] */
+#pop-title {
+  margin: 0;
+}
+/* [TEXT] */
+#pop-text {
+  color: #343a40;
+}
+
+/*--------
+  CONTENTAREA
+---------*/
+#contentarea {
+  box-sizing: border-box;
+}
+
+/*-- Image Gallery --*/
+#contentarea .galleryrow {
+  text-align: left;
+}
+#contentarea .gallerycolumn {
+  position: relative;
+  display: inline-block;
+  width: 10vw;
+  height: 10vw;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 100px;
+  min-height: 100px;
+}
+#contentarea .galleryitem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  transform: translate(-50%,-50%);
+  max-width: 100%;
+  z-index: 1;
+}
+
+/* CSS for displaying Loupe while hovering above an Image */
+#contentarea span.icon-focus {
+  position: absolute;
+  top: calc(5vw - 32px);
+  left: calc(5vw - 24px);
+  font-family: 'MobiriseIcons';
+  font-size: 3rem;
+  color: #fff;
+  opacity: 0;
+  transition: .2s opacity ease-in-out;
+  z-index: 2;
+}
+#contentarea span.icon-focus::before {
+  content: '\e96b'; 
+}
+#contentarea div.gallerycolumn:hover span.icon-focus {
+  opacity: 1; 
+}
+
+
+/*-- Lighbox, Modal and Carousel --*/
+#contentarea .modal {
+  position: fixed;
+  overflow: hidden;
+  z-index: 1050;
+}
+#contentarea .modal-dialog {
+  max-width: 100%;
+}
+#contentarea .modal-content {
+  border-radius: 0;
+  border: none;
+  background: transparent; 
+}
+#contentarea .modal-body {
+  padding: 0; 
+}
+#contentarea .modal-body img {
+  max-width: 100%;
+  max-height: 80vh; 
+}
+
+/* Close Button of Carousel */
+#contentarea .modal .close {
+  position: fixed;
+  background: #1b1b1b;
+  opacity: .5;
+  font-size: 35px;
+  font-weight: 300;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  color: #fff;
+  top: 2.5rem;
+  right: 2.5rem;
+  line-height: 70px;
+  border: none;
+  text-align: center;
+  text-shadow: none;
+  z-index: 5;
+  -webkit-transition: opacity .3s ease;
+  -moz-transition: opacity .3s ease;
+  -o-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+  font-family: 'MobiriseIcons'; 
+}  
+#contentarea .modal .close::before {
+  content: '\e91a'; 
+}
+#contentarea .modal .close:hover {
+  opacity: 1;
+  background: #000;
+  color: #fff; 
+}
+
+/*-------
+  Slider
+-------*/
+.content-slider .carousel-inner > .active,
+.content-slider .carousel-inner > .next,
+.content-slider .carousel-inner > .prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content-slider .carousel-control {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: 50%;
+  margin-top: -35px;
+  line-height: 70px;
+  border-radius: 50%;
+  font-size: 35px;
+  border: 0;
+  opacity: .5;
+  text-shadow: none;
+  z-index: 5;
+  color: #fff;
+  -webkit-transition: all .2s ease-in-out 0s;
+  -o-transition: all .2s ease-in-out 0s;
+  transition: all .2s ease-in-out 0s; 
+}
+#contentarea .content-slider .carousel-control {
+  position: fixed;
+}
+#contentarea .content-slider .carousel-inner > .active {
+  display: block; 
+}
+#contentarea .content-slider .carousel-control.left {
+  left: 0;
+  margin-left: 2.5rem; 
+}
+#contentarea .content-slider .carousel-control.right {
+  right: 0;
+  margin-right: 2.5rem; 
+}
+#contentarea .content-slider .carousel-control:hover {
+  background: #1b1b1b;
+  color: #fff;
+  opacity: 1; 
+}
+#contentarea .content-slider .content-item {
+  vertical-align: middle;
+}
+
+/*-------
+  Like Button & Counter
+-------*/
+#contentarea .likeContainer {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translate(-50%, 8px)
+}
+#contentarea .likeContainer > .formitem {
+  vertical-align: middle;
+  text-align: center;
+}
+#contentarea .likeContainer > .formitem.output {
+  background-color: white;
+  width: 100px;
+}
+
+/*--------
+  CONTACT
+--------*/
+.contact-form{
+  background: #fff;
+  margin-bottom: 5%;
+  width: 70%;
+}
+.contact-form .form-control{
+  border-radius:1rem;
+}
+.contact-image{
+  text-align: center;
+}
+.contact-image img{
+  width: 10vw;
+}
+.contact-form form{
+  padding: 9%;
+}
+.contact-form form .row{
+  margin-bottom: -7%;
+}
+.contact-form h3{
+  margin-bottom: 8%;
+  margin-top: -10%;
+  text-align: center;
+  color: #0062cc;
+  font-weight: bold;
+}
+.contact-form .btnContact {
+  width: 50%;
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5%;
+  background: #0062cc;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*--------
+  Login, Register
+--------*/
+#logreg {
+  padding-top: 90px;
+  background-image: url("img/background.jpg");
+}
+#logreg .panel-login {
+border-color: #ccc;
+-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+#logreg .panel-login>.panel-heading {
+color: #00415d;
+background-color: #fff;
+border-color: #fff;
+text-align:center;
+}
+#logreg .panel-login>.panel-heading a{
+text-decoration: none;
+color: #666;
+font-weight: bold;
+font-size: 15px;
+-webkit-transition: all 0.1s linear;
+-moz-transition: all 0.1s linear;
+transition: all 0.1s linear;
+}
+#logreg .panel-login>.panel-heading a.active{
+color: #029f5b;
+font-size: 18px;
+}
+#logreg .panel-login>.panel-heading hr{
+margin-top: 10px;
+margin-bottom: 0px;
+clear: both;
+border: 0;
+height: 1px;
+background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+#logreg .panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+height: 45px;
+border: 1px solid #ddd;
+font-size: 16px;
+-webkit-transition: all 0.1s linear;
+-moz-transition: all 0.1s linear;
+transition: all 0.1s linear;
+}
+#logreg .panel-login input:hover,
+#logreg .panel-login input:focus {
+outline:none;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+border-color: #ccc;
+}
+#logreg .btn-login {
+background-color: #59B2E0;
+outline: none;
+color: #fff;
+font-size: 14px;
+height: auto;
+font-weight: normal;
+padding: 14px 0;
+text-transform: uppercase;
+border-color: #59B2E6;
+}
+#logreg .btn-login:hover,
+#logreg .btn-login:focus {
+color: #fff;
+background-color: #53A3CD;
+border-color: #53A3CD;
+}
+#logreg .forgot-password {
+text-decoration: underline;
+color: #888;
+}
+#logreg .forgot-password:hover,
+#logreg .forgot-password:focus {
+text-decoration: underline;
+color: #666;
+}
+#logreg .btn-register {
+background-color: #1CB94E;
+outline: none;
+color: #fff;
+font-size: 14px;
+height: auto;
+font-weight: normal;
+padding: 14px 0;
+text-transform: uppercase;
+border-color: #1CB94A;
+}
+#logreg .btn-register:hover,
+#logreg .btn-register:focus {
+color: #fff;
+background-color: #1CA347;
+border-color: #1CA347;
+}
+#logreg .welcome-text {
+  color: #000;
+  font-size: 1em;
+}
+
+/*--------
+  IMPRESSUM
+--------*/
+#impressum p {
+  text-align: justify;
+}
+
+/*--------
+  RESPONSIVE DESIGN
+--------*/
+@media screen and (max-width: 768px) {
+  #contentarea .gallerycolumn {
+      width: 30vw;
+      height: 30vw;
+      min-width: 200px;
+      min-height: 150px;
+  }
+  #contentarea .galleryrow {
+      text-align: center;
+  }
+  #contentarea span.icon-focus {
+      position: relative;
+      top: 10vw;
+      left: 0;
+  }
+  #contentarea .content-slider .carousel-control {
+      bottom: 2.5rem;
+      margin-top: 0;
+      top: auto;
+      z-index: 17; 
+  } 
+  #contentarea .carousel-control,
+  #contentarea .modal .close {
+    position: fixed; 
+  }
+}
+
 @media screen and (max-width: 500px) {
+  /* Contact */
+  .contact-form {
+    width: 90%;
+  }
+  .contact-form .btnContact {
+      width: 100%;
+  }
+  .contact-form h3 {
+      font-size: smaller;
+  }
+  .contact-form form{
+    padding-top: 9%;
+    padding-right: 5%;
+    padding-bottom: 9%;
+    padding-left: 5%;
+  }
+  /* NavBar and Banner/Header */
   .navbar .navbar-brand {
     visibility: hidden;
   }
@@ -92,14 +504,46 @@ body {
   .header h3 {
     font-size: medium;
   }
-  #impressum p {
-    text-align: justify;
-  }
+  /* Impressum */
   #impressum h2 {
     font-size: large;
     font-weight: bold;
   }
   #impressum h1 {
     font-size: x-large;
+  }
+  /* Content Area */
+  #contentarea .gallerycolumn {
+      width: 90vw;
+      height: 90vw;    
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+  }
+  #contentarea span.icon-focus {
+      top: 40vw;
+  }
+  /* Popup Box */
+  #pop-box {
+    margin-top: 10vh;
+  }
+  /* Login/Registration */
+  .welcome-text h3 {
+    font-size: large;
+    font-weight: bold;
+  }    
+}
+
+@media screen and (max-width: 320px) {
+  /* Content Area */
+  #contentarea .likeContainer > .formitem.output {
+      width: 40px !important;
+  }
+  #contentarea .likeContainer > .formitem {
+      width: 30px;
+      height: 26px;
+      border: 0;
+      margin: 0;
+      padding: 0;
   }
 }
